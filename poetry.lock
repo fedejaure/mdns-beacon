@@ -412,6 +412,14 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
 [[package]]
+name = "ifaddr"
+version = "0.1.7"
+description = "Cross-platform network interface and IP address enumeration library"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "imagesize"
 version = "1.2.0"
 description = "Getting image size from png/jpeg/jpeg2000/gif file"
@@ -1026,6 +1034,17 @@ optional = ["pygments", "colorama", "nbformat", "nbconvert", "jupyter-client", "
 tests = ["pytest", "pytest-cov", "codecov", "scikit-build", "cmake", "ninja", "pybind11", "nbformat", "nbconvert", "jupyter-client", "ipython", "ipykernel"]
 
 [[package]]
+name = "zeroconf"
+version = "0.28.6"
+description = "Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+ifaddr = ">=0.1.7"
+
+[[package]]
 name = "zipp"
 version = "3.3.1"
 description = "Backport of pathlib-compatible object wrapper for zip files"
@@ -1040,7 +1059,7 @@ testing = ["pytest (>=3.5,<3.7.3 || >3.7.3)", "pytest-checkdocs (>=1.2.3)", "pyt
 [metadata]
 lock-version = "1.1"
 python-versions = "<3.10,>=3.6.1"
-content-hash = "099bc61a6fd55eecefd29ea2cba668a6d68eb2af3a22b077c619b775db1dbb63"
+content-hash = "2b0a35b58972eb5e421f7a494bb521c6ed7fafe315b9651a3b91058694e86f86"
 
 [metadata.files]
 alabaster = [
@@ -1222,6 +1241,10 @@ identify = [
 idna = [
     {file = "idna-2.10-py2.py3-none-any.whl", hash = "sha256:b97d804b1e9b523befed77c48dacec60e6dcb0b5391d57af6a65a312a90648c0"},
     {file = "idna-2.10.tar.gz", hash = "sha256:b307872f855b18632ce0c21c5e45be78c0ea7ae4c15c828c20788b26921eb3f6"},
+]
+ifaddr = [
+    {file = "ifaddr-0.1.7-py2.py3-none-any.whl", hash = "sha256:d1f603952f0a71c9ab4e705754511e4e03b02565bc4cec7188ad6415ff534cd3"},
+    {file = "ifaddr-0.1.7.tar.gz", hash = "sha256:1f9e8a6ca6f16db5a37d3356f07b6e52344f6f9f7e806d618537731669eb1a94"},
 ]
 imagesize = [
     {file = "imagesize-1.2.0-py2.py3-none-any.whl", hash = "sha256:6965f19a6a2039c7d48bca7dba2473069ff854c36ae6f19d2cde309d998228a1"},
@@ -1547,6 +1570,10 @@ wrapt = [
 xdoctest = [
     {file = "xdoctest-0.15.0-py2.py3-none-any.whl", hash = "sha256:695ea04303a48cbb319709270d43f7bae7f3de3701aec73f09d90a216499992e"},
     {file = "xdoctest-0.15.0.tar.gz", hash = "sha256:7f0a184d403b69b166ebec1aadb13c98c96c59101e974ae2e4db4c3a803ec371"},
+]
+zeroconf = [
+    {file = "zeroconf-0.28.6-py3-none-any.whl", hash = "sha256:17ae1e1681091b91b0337517db222eae1807003154c01b0bd0ab99572dfeafd8"},
+    {file = "zeroconf-0.28.6.tar.gz", hash = "sha256:70f10f0f16e3a8c4eb5e1a106b812b8d052253041cf1ee1195933df706f5261c"},
 ]
 zipp = [
     {file = "zipp-3.3.1-py3-none-any.whl", hash = "sha256:16522f69653f0d67be90e8baa4a46d66389145b734345d68a257da53df670903"},
