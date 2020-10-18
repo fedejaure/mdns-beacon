@@ -95,6 +95,7 @@ docstring-convention = "google"
 pyflakes = ["+*"]
 pycodestyle = ["+*"]
 mccabe = ["+*"]
+flake8-annotations = ["+*", "-ANN1??"]
 "flake8-*" = ["+*"]
 darglint = ["+*"]
 
