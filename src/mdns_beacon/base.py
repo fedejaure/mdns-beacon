@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 class BaseBeacon(ABC):
     """Base mDNS Beacon."""
 
-    _zeroconf: Zeroconf
+    _zeroconf: Zeroconf = None
 
     def __init__(self, ip_version: IPVersion = IPVersion.All) -> None:
         """Init a mDNS Beacon instance."""
