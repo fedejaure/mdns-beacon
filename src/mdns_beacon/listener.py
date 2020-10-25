@@ -20,6 +20,7 @@ class BeaconListener(BaseBeacon):
         **kwargs: Any,
     ) -> None:
         """Init a mDNS Beacon listener."""
+        super().__init__(*args, **kwargs)
         self.handlers = handlers
         self.services = services or list(ZeroconfServiceTypes.find(zc=self.zeroconf))
 
