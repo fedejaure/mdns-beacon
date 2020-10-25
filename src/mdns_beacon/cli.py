@@ -1,9 +1,10 @@
 """Console script for mdns-beacon."""
+from typing import List
+
 import click
 from zeroconf import ServiceStateChange, Zeroconf
 
-from mdns_beacon import __version__
-from mdns_beacon.listener import BeaconListener
+from mdns_beacon import Beacon, BeaconListener, __version__
 
 
 def on_service_state_change(
@@ -20,10 +21,27 @@ def main() -> None:
 
 
 @main.command()
+@click.argument("name")
+@click.option(
+    "--alias", "aliases", default=[], multiple=True, help="Alias to announce on the local network."
+)
+def blink(name: str, aliases: List[str]) -> None:
+    """Announce aliases on the local network."""
+    beacon = Beacon(aliases=[name, *aliases])
+    try:
+        beacon.run_forever()
+    finally:
+        beacon.stop()
+
+
+@main.command()
 def listen() -> None:
     """Listen for services on the local network."""
     listerner = BeaconListener(handlers=[on_service_state_change])
-    listerner.run_forever()
+    try:
+        listerner.run_forever()
+    finally:
+        listerner.stop()
 
 
 if __name__ == "__main__":

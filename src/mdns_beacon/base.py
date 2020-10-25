@@ -25,6 +25,11 @@ class BaseBeacon(ABC):
             self._zeroconf = Zeroconf(ip_version=self.ip_version)
         return self._zeroconf
 
+    def stop(self) -> None:
+        """Stop the Beacon."""
+        self.zeroconf.close()
+        self._zeroconf = None
+
     @abstractmethod
     def _execute(self) -> None:
         """Execute Beacon work.
@@ -41,4 +46,3 @@ class BaseBeacon(ABC):
         finally:
             loop.run_until_complete(loop.shutdown_asyncgens())
             loop.close()
-            self.zeroconf.close()
