@@ -2,6 +2,7 @@
 import asyncio
 import logging
 from abc import ABC, abstractmethod
+from typing import Optional
 
 from zeroconf import IPVersion, Zeroconf
 
@@ -11,7 +12,7 @@ logger = logging.getLogger(__name__)
 class BaseBeacon(ABC):
     """Base mDNS Beacon."""
 
-    _zeroconf: Zeroconf = None
+    _zeroconf: Optional[Zeroconf] = None
 
     def __init__(self, ip_version: IPVersion = IPVersion.All) -> None:
         """Init a mDNS Beacon instance."""
