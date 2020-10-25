@@ -38,4 +38,5 @@ class BaseBeacon(ABC):
         try:
             loop.run_forever()
         finally:
+            self.zeroconf.close()
             loop.close()
