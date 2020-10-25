@@ -1,7 +1,7 @@
 """Beacon module."""
 import logging
 import socket
-from typing import Any, List, Literal, Optional
+from typing import Any, List, Optional
 
 from zeroconf import ServiceInfo
 
@@ -19,7 +19,7 @@ class Beacon(BaseBeacon):
         addresses: Optional[List[bytes]] = None,
         port: int = 80,
         type_: str = "http",
-        protocol: Literal["tcp", "udp"] = "tcp",
+        protocol: str = "tcp",
         ttl: int = 60,
         *args: Any,
         **kwargs: Any,
