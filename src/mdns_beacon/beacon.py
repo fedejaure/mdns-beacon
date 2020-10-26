@@ -13,6 +13,8 @@ logger = logging.getLogger(__name__)
 class Beacon(BaseBeacon):
     """mDNS Beacon."""
 
+    _services: Optional[List[ServiceInfo]] = None
+
     def __init__(
         self,
         aliases: Optional[List[str]] = None,
@@ -36,19 +38,21 @@ class Beacon(BaseBeacon):
     @property
     def services(self) -> List[ServiceInfo]:
         """Services to register on the local network."""
-        return [
-            ServiceInfo(
-                type_=f"_{self.type_}._{self.protocol}.local.",
-                name=f"{alias}._{self.type_}._{self.protocol}.local."
-                if "." not in alias
-                else f"{alias}._sub._{self.type_}._{self.protocol}.local.",
-                addresses=self.addresses,
-                port=self.port,
-                host_ttl=self.ttl,
-                server=f"{alias}.local.",
-            )
-            for alias in self.aliases
-        ]
+        if not self._services:
+            self._services = [
+                ServiceInfo(
+                    type_=f"_{self.type_}._{self.protocol}.local.",
+                    name=f"{alias}._{self.type_}._{self.protocol}.local."
+                    if "." not in alias
+                    else f"{alias}._sub._{self.type_}._{self.protocol}.local.",
+                    addresses=self.addresses,
+                    port=self.port,
+                    host_ttl=self.ttl,
+                    server=f"{alias}.local.",
+                )
+                for alias in self.aliases
+            ]
+        return self._services
 
     def stop(self) -> None:
         """Stop the Beacon."""
