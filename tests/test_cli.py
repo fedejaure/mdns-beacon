@@ -10,7 +10,7 @@ def test_command_line_interface() -> None:
     runner = CliRunner()
     result = runner.invoke(cli.main)
     assert result.exit_code == 0
-    assert "mdns_beacon.cli.main" in result.output
+    assert "Usage: main [OPTIONS]" in result.output
 
 
 def test_command_line_interface_help() -> None:
