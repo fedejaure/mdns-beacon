@@ -1,17 +1,15 @@
 """Console script for mdns-beacon."""
-from typing import Iterable
+from typing import Any, Dict, Iterable
 
 import click
-from zeroconf import ServiceStateChange, Zeroconf
+from rich.console import Console
+from rich.table import Table
+from zeroconf import IPVersion, ServiceStateChange, Zeroconf
 
 from mdns_beacon import Beacon, BeaconListener, __version__
 
-
-def on_service_state_change(
-    zeroconf: Zeroconf, service_type: str, name: str, state_change: ServiceStateChange
-) -> None:
-    """On service state change handler."""
-    click.echo(f"Service {name} of type {service_type} state changed: {state_change}")
+console = Console()
+mDNS_services: Dict[str, Any] = {}
 
 
 @click.group()
@@ -34,6 +32,51 @@ def blink(name: str, aliases: Iterable[str]) -> None:
         beacon.stop()
 
 
+def print_services() -> None:
+    """Print services."""
+    console.clear()
+    if mDNS_services:
+        table = Table()
+        table.width = console.width
+        table.title = (
+            ":police_car_light::satellite_antenna:"
+            " mDNS Beacon Listener "
+            ":satellite_antenna::police_car_light:"
+        )
+        table.add_column("#", no_wrap=True)
+        for key in list(mDNS_services.values())[0].keys():
+            table.add_column(key, no_wrap=True)
+
+        for index, service in enumerate(mDNS_services.values()):
+            table.add_row(str(index), *[str(value) for value in service.values()])
+
+        console.print(table, justify="center")
+    console.print("Listen for services (Press CTRL+C to quit) ...")
+
+
+def on_service_state_change(
+    zeroconf: Zeroconf, service_type: str, name: str, state_change: ServiceStateChange
+) -> None:
+    """On service state change handler."""
+    global mDNS_services
+    service_id = f"{name}_{service_type}"
+    if state_change is ServiceStateChange.Removed:
+        mDNS_services.pop(service_id, None)
+    else:
+        info = zeroconf.get_service_info(service_type, name)
+        if info:
+            mDNS_services[service_id] = {
+                "Type": info.type,
+                "Name": info.name,
+                "Address IPv4": ",".join(info.parsed_addresses(IPVersion.V4Only)),
+                "Port": info.port,
+                "Server": info.server,
+                "TTL": info.host_ttl,
+                # "Properties": info.properties,
+            }
+    print_services()
+
+
 @main.command()
 @click.option(
     "--service",
@@ -44,13 +87,8 @@ def blink(name: str, aliases: Iterable[str]) -> None:
 )
 def listen(services: Iterable[str]) -> None:
     """Listen for services on the local network."""
+    print_services()
     listerner = BeaconListener(services=list(services), handlers=[on_service_state_change])
-    services_msg = (
-        ",".join([repr(service) for service in listerner.services])
-        if len(listerner.services) < 3
-        else f"{len(listerner.services)} services"
-    )
-    click.echo(f"mdns-beacon listen for {services_msg} (Press CTRL+C to quit)")
     try:
         listerner.run_forever()
     finally:
