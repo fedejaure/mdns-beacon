@@ -27,6 +27,7 @@ class BaseBeacon(ABC):
 
     def stop(self) -> None:
         """Stop the Beacon."""
+        logger.debug("Stoping zeroconf")
         self.zeroconf.close()
         self._zeroconf = None
 
@@ -40,6 +41,7 @@ class BaseBeacon(ABC):
     def run_forever(self) -> None:
         """Run beacon."""
         self._execute()
+        logger.debug("Starting forever loop")
         loop = asyncio.get_event_loop()
         try:
             loop.run_forever()

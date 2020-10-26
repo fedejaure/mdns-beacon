@@ -52,11 +52,15 @@ class Beacon(BaseBeacon):
 
     def stop(self) -> None:
         """Stop the Beacon."""
+        logger.info("Unregistering %(services_len)s services", services_len=len(self.services))
         for service in self.services:
+            logger.debug("Unregistering %(service_name)s", service_name=service.name)
             self.zeroconf.unregister_service(service)
         super().stop()
 
     def _execute(self) -> None:
         """Register aliases on the local network."""
+        logger.info("Registering %(services_len)s services", services_len=len(self.services))
         for service in self.services:
+            logger.debug("Registering %(service_name)s", service_name=service.name)
             self.zeroconf.register_service(service)

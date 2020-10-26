@@ -33,4 +33,5 @@ class BeaconListener(BaseBeacon):
 
     def _execute(self) -> None:
         """Listen for services on the local network."""
+        logger.debug("Executing beacon listener")
         ServiceBrowser(zc=self.zeroconf, type_=self.services, handlers=self.handlers)
