@@ -1,5 +1,5 @@
 """Console script for mdns-beacon."""
-from typing import List, Optional
+from typing import Iterable
 
 import click
 from zeroconf import ServiceStateChange, Zeroconf
@@ -25,7 +25,7 @@ def main() -> None:
 @click.option(
     "--alias", "aliases", default=[], multiple=True, help="Alias to announce on the local network."
 )
-def blink(name: str, aliases: List[str]) -> None:
+def blink(name: str, aliases: Iterable[str]) -> None:
     """Announce aliases on the local network."""
     beacon = Beacon(aliases=[name, *aliases])
     try:
@@ -38,11 +38,11 @@ def blink(name: str, aliases: List[str]) -> None:
 @click.option(
     "--service",
     "services",
-    default=None,
+    default=[],
     multiple=True,
     help="Service to listen for on the local network.",
 )
-def listen(services: Optional[List[str]]) -> None:
+def listen(services: Iterable[str]) -> None:
     """Listen for services on the local network."""
     listerner = BeaconListener(services=list(services), handlers=[on_service_state_change])
     services_msg = (
