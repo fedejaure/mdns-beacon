@@ -1,5 +1,5 @@
 """Console script for mdns-beacon."""
-from typing import List
+from typing import List, Optional
 
 import click
 from zeroconf import ServiceStateChange, Zeroconf
@@ -35,9 +35,22 @@ def blink(name: str, aliases: List[str]) -> None:
 
 
 @main.command()
-def listen() -> None:
+@click.option(
+    "--service",
+    "services",
+    default=None,
+    multiple=True,
+    help="Service to listen for on the local network.",
+)
+def listen(services: Optional[List[str]]) -> None:
     """Listen for services on the local network."""
-    listerner = BeaconListener(handlers=[on_service_state_change])
+    listerner = BeaconListener(services=list(services), handlers=[on_service_state_change])
+    services_msg = (
+        ",".join([repr(service) for service in listerner.services])
+        if len(listerner.services) < 3
+        else f"{len(listerner.services)} services"
+    )
+    click.echo(f"mdns-beacon listen for {services_msg} (Press CTRL+C to quit)")
     try:
         listerner.run_forever()
     finally:
