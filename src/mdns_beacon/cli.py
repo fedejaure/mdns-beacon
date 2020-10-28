@@ -9,7 +9,17 @@ from zeroconf import IPVersion, ServiceStateChange, Zeroconf
 from mdns_beacon import Beacon, BeaconListener, __version__
 
 console = Console()
+
 mDNS_services: Dict[str, Any] = {}
+TABLE_SERVICES_COLUMNS = [
+    "#",
+    "Type",
+    "Name",
+    "Address IPv4",
+    "Port",
+    "Server",
+    "TTL",
+]
 
 
 @click.group()
@@ -35,22 +45,23 @@ def blink(name: str, aliases: Iterable[str]) -> None:
 def print_services() -> None:
     """Print services."""
     console.clear()
-    if mDNS_services:
-        table = Table()
-        table.width = console.width
-        table.title = (
-            ":police_car_light::satellite_antenna:"
-            " mDNS Beacon Listener "
-            ":satellite_antenna::police_car_light:"
+    table = Table()
+    table.width = console.width
+    table.title = (
+        ":police_car_light::satellite_antenna:"
+        " mDNS Beacon Listener "
+        ":satellite_antenna::police_car_light:"
+    )
+
+    for key in TABLE_SERVICES_COLUMNS:
+        table.add_column(key, no_wrap=True)
+
+    for index, service in enumerate(mDNS_services.values()):
+        table.add_row(
+            str(index), *[str(v) for k, v in service.items() if k in TABLE_SERVICES_COLUMNS]
         )
-        table.add_column("#", no_wrap=True)
-        for key in list(mDNS_services.values())[0].keys():
-            table.add_column(key, no_wrap=True)
 
-        for index, service in enumerate(mDNS_services.values()):
-            table.add_row(str(index), *[str(value) for value in service.values()])
-
-        console.print(table, justify="center")
+    console.print(table, justify="center")
     console.print("Listen for services (Press CTRL+C to quit) ...")
 
 
@@ -92,6 +103,7 @@ def listen(services: Iterable[str]) -> None:
     try:
         listerner.run_forever()
     finally:
+        console.clear()
         listerner.stop()
 
 
