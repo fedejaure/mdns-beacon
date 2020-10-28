@@ -1,7 +1,7 @@
 """Beacon module."""
 import logging
-import socket
-from typing import Any, List, Optional
+from ipaddress import IPv4Address, IPv6Address, ip_address
+from typing import Any, List, Optional, Union
 
 from zeroconf import ServiceInfo
 
@@ -18,7 +18,7 @@ class Beacon(BaseBeacon):
     def __init__(
         self,
         aliases: Optional[List[str]] = None,
-        addresses: Optional[List[bytes]] = None,
+        addresses: Optional[List[Union[IPv4Address, IPv6Address]]] = None,
         port: int = 80,
         type_: str = "http",
         protocol: str = "tcp",
@@ -29,7 +29,7 @@ class Beacon(BaseBeacon):
         """Init a mDNS Beacon instance."""
         super().__init__(*args, **kwargs)
         self.aliases = aliases or []
-        self.addresses = addresses or [socket.inet_aton("127.0.0.1")]
+        self.addresses = addresses or [ip_address("127.0.0.1")]
         self.port = port
         self.type_ = type_
         self.protocol = protocol
@@ -45,7 +45,7 @@ class Beacon(BaseBeacon):
                     name=f"{alias}._{self.type_}._{self.protocol}.local."
                     if "." not in alias
                     else f"{alias}._sub._{self.type_}._{self.protocol}.local.",
-                    addresses=self.addresses,
+                    parsed_addresses=[str(address) for address in self.addresses],
                     port=self.port,
                     host_ttl=self.ttl,
                     server=f"{alias}.local.",

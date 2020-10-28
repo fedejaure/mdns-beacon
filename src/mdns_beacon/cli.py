@@ -1,5 +1,6 @@
 """Console script for mdns-beacon."""
-from typing import Any, Dict, Iterable
+from ipaddress import IPv4Address, IPv6Address, ip_address
+from typing import Any, AnyStr, Dict, Iterable, Optional, Union
 
 import click
 from rich.console import Console
@@ -22,6 +23,27 @@ TABLE_SERVICES_COLUMNS = [
 ]
 
 
+class IpAddressParamType(click.ParamType):
+    """An IPv4Address or IPv6Address parsed via ipaddress.ip_address.
+
+    Example:
+        >>> ip = IpAddressParamType()
+        >>> ip.convert("127.0.0.1", None, None)
+        IPv4Address('127.0.0.1')
+    """
+
+    name = "ip_address"
+
+    def convert(
+        self, value: AnyStr, param: Optional[click.Parameter], ctx: Optional[click.Context]
+    ) -> Union[IPv4Address, IPv6Address]:
+        """Parse value into IPv4Address or IPv6Address."""
+        try:
+            return ip_address(value)
+        except ValueError:
+            self.fail(f"expected an IPv4 or IPv6 address, got {value!r}", param, ctx)
+
+
 @click.group()
 @click.version_option(version=__version__)
 def main() -> None:
@@ -33,9 +55,25 @@ def main() -> None:
 @click.option(
     "--alias", "aliases", default=[], multiple=True, help="Alias to announce on the local network."
 )
-def blink(name: str, aliases: Iterable[str]) -> None:
+@click.option(
+    "--address",
+    "addresses",
+    default=[],
+    multiple=True,
+    type=IpAddressParamType(),
+    help="Address to announce on the local network.",
+)
+@click.option(
+    "--port", "port", default=80, type=int, help="Port to announce on the local network."
+)
+def blink(
+    name: str,
+    aliases: Iterable[str],
+    addresses: Iterable[Union[IPv4Address, IPv6Address]],
+    port: int,
+) -> None:
     """Announce aliases on the local network."""
-    beacon = Beacon(aliases=[name, *aliases])
+    beacon = Beacon(aliases=[name, *aliases], addresses=list(addresses), port=port)
     try:
         beacon.run_forever()
     finally:
