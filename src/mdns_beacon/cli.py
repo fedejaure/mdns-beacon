@@ -121,7 +121,6 @@ def on_service_state_change(
                 "Port": info.port,
                 "Server": info.server,
                 "TTL": info.host_ttl,
-                # "Properties": info.properties,
             }
     print_services()
 
