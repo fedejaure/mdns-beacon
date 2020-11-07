@@ -12,10 +12,26 @@ mdns\_beacon.cli module
    :undoc-members:
    :show-inheritance:
 
-mdns\_beacon.mdns\_beacon module
+mdns\_beacon.base module
 --------------------------------
 
-.. automodule:: mdns_beacon.mdns_beacon
+.. automodule:: mdns_beacon.base
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+mdns\_beacon.beacon module
+--------------------------------
+
+.. automodule:: mdns_beacon.beacon
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+mdns\_beacon.listener module
+--------------------------------
+
+.. automodule:: mdns_beacon.listener
    :members:
    :undoc-members:
    :show-inheritance:
