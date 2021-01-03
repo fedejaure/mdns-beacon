@@ -42,7 +42,7 @@ class Beacon(BaseBeacon):
             self._services = [
                 ServiceInfo(
                     type_=f"_{self.type_}._{self.protocol}.local.",
-                    name=f"{alias}._{self.type_}._{self.protocol}.local.",
+                    name=f"{alias}.local.",
                     parsed_addresses=[str(address) for address in self.addresses],
                     port=self.port,
                     host_ttl=self.ttl,

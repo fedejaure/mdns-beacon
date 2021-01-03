@@ -14,7 +14,7 @@ class BaseBeacon(ABC):
 
     _zeroconf: Optional[Zeroconf] = None
 
-    def __init__(self, ip_version: IPVersion = IPVersion.All) -> None:
+    def __init__(self, ip_version: Optional[IPVersion] = None) -> None:
         """Init a mDNS Beacon instance."""
         self.ip_version = ip_version
 
