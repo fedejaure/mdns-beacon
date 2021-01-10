@@ -48,6 +48,7 @@ def test_run_forever(
     mocker: MockerFixture, safe_loop: AbstractEventLoop, ip_version: Optional[IPVersion]
 ) -> None:
     """Test run forever."""
+
     def _send_signal() -> None:
         time.sleep(0.5)
         os.kill(os.getpid(), signal.SIGINT)
