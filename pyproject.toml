@@ -32,7 +32,7 @@ mdns-beacon = 'mdns_beacon.cli:main'
 python = "<3.10,>=3.6.1"
 
 click = "^7.1.2"
-zeroconf = "^0.28.6"
+zeroconf = "^0.28.7"
 rich = "^9.1.0"
 
 
