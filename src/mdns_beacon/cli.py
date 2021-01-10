@@ -77,6 +77,7 @@ def blink(
     try:
         beacon.run_forever()
     finally:
+        console.print("Shutting down ...")
         beacon.stop()
 
 
@@ -136,12 +137,12 @@ def on_service_state_change(
 def listen(services: Iterable[str]) -> None:
     """Listen for services on the local network."""
     print_services()
-    listerner = BeaconListener(services=list(services), handlers=[on_service_state_change])
+    listener = BeaconListener(services=list(services), handlers=[on_service_state_change])
     try:
-        listerner.run_forever()
+        listener.run_forever()
     finally:
         console.clear()
-        listerner.stop()
+        listener.stop()
 
 
 if __name__ == "__main__":
