@@ -43,7 +43,14 @@ def tests(session: Session) -> None:
     """Run the test suite."""
     session.install(".")
     install_with_constraints(
-        session, "invoke", "pytest", "xdoctest", "coverage[toml]", "pytest-cov"
+        session,
+        "invoke",
+        "pytest",
+        "xdoctest",
+        "coverage[toml]",
+        "pytest-cov",
+        "pytest-mock",
+        "pytest-asyncio",
     )
     try:
         session.run(
@@ -70,7 +77,7 @@ def coverage(session: Session) -> None:
 def mypy(session: Session) -> None:
     """Type-check using mypy."""
     session.install(".")
-    install_with_constraints(session, "invoke", "mypy")
+    install_with_constraints(session, "invoke", "mypy", "pytest-mock")
     session.run("inv", "mypy")
 
 
