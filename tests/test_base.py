@@ -29,10 +29,10 @@ def safe_loop(
     """Safe event loop fixture."""
     loop = asyncio.get_event_loop_policy().new_event_loop()
     asyncio.set_event_loop(loop)
-    loop._close = loop.close
-    loop.close = mocker.Mock()
+    _close = loop.close
+    loop.close = mocker.Mock()  # type: ignore
     yield loop
-    loop._close()
+    _close()
 
 
 @pytest.mark.parametrize(
@@ -67,4 +67,4 @@ def test_run_forever(
     # asserting the loop is stopped but not closed
     assert not safe_loop.is_running()
     assert not safe_loop.is_closed()
-    safe_loop.close.assert_called_once_with()
+    safe_loop.close.assert_called_once_with()  # type: ignore
