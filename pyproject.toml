@@ -1,4 +1,3 @@
-
 [tool.poetry]
 name = "mdns-beacon"
 version = "0.1.0"
@@ -9,13 +8,11 @@ readme = "README.md"
 homepage = "https://github.com/fedejaure/mdns-beacon"
 repository = "https://github.com/fedejaure/mdns-beacon"
 documentation = "https://mdns-beacon.readthedocs.io"
-keywords = ["mdns-beacon"]
+keywords = ["mdns-beacon", "mdns", "beacon", "avahi", "zeroconf", "bonjour"]
 classifiers=[
     "Development Status :: 2 - Pre-Alpha",
     "Intended Audience :: Developers",
-    
     "License :: OSI Approved :: MIT License",
-    
     "Natural Language :: English",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.6",
