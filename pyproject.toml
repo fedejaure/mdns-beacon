@@ -8,6 +8,7 @@ authors = ["Federico Jaureguialzo <fedejaure@gmail.com>"]
 readme = "README.md"
 homepage = "https://github.com/fedejaure/mdns-beacon"
 repository = "https://github.com/fedejaure/mdns-beacon"
+documentation = "https://mdns-beacon.readthedocs.io"
 keywords = ["mdns-beacon"]
 classifiers=[
     "Development Status :: 2 - Pre-Alpha",
@@ -22,6 +23,10 @@ classifiers=[
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
 ]
+
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/fedejaure/mdns-beacon/issues"
 
 
 [tool.poetry.scripts]
