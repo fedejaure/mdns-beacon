@@ -16,19 +16,21 @@ class BeaconListener(BaseBeacon):
         self,
         handlers: Union[ServiceListener, List[Callable[..., None]]],
         services: Optional[List[str]] = None,
+        timeout: Union[int, float] = 5,
         *args: Any,
         **kwargs: Any,
     ) -> None:
         """Init a mDNS Beacon listener."""
         super().__init__(*args, **kwargs)
         self.handlers = handlers
+        self.timeout = timeout
         self.services = services or self.default_services
 
     @property
     def default_services(self) -> List[str]:
         """Find default services."""
         return ["_http._tcp.local.", "_hap._tcp.local."] + list(
-            ZeroconfServiceTypes.find(zc=self.zeroconf)
+            ZeroconfServiceTypes.find(zc=self.zeroconf, timeout=self.timeout)
         )
 
     def _execute(self) -> None:

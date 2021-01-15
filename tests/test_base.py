@@ -1,11 +1,10 @@
 """Tests for `base` module."""
-import asyncio
 import os
 import signal
 import threading
 import time
 from asyncio import AbstractEventLoop
-from typing import Generator, Optional
+from typing import Optional
 
 import pytest
 from pytest_mock import MockerFixture
@@ -22,26 +21,12 @@ class DummyBeacon(BaseBeacon):
         self.zeroconf
 
 
-@pytest.fixture
-def safe_loop(
-    event_loop: AbstractEventLoop, mocker: MockerFixture
-) -> Generator[AbstractEventLoop, None, None]:
-    """Safe event loop fixture."""
-    loop = asyncio.get_event_loop_policy().new_event_loop()
-    asyncio.set_event_loop(loop)
-    _close = loop.close
-    loop.close = mocker.Mock()  # type: ignore
-    yield loop
-    _close()
-
-
 @pytest.mark.parametrize(
     "ip_version",
     [
-        (None,),
-        (IPVersion.V4Only,),
-        (IPVersion.V6Only,),
-        (IPVersion.All,),
+        None,
+        IPVersion.V4Only,
+        IPVersion.V6Only,
     ],
 )
 def test_run_forever(
@@ -56,7 +41,7 @@ def test_run_forever(
     thread = threading.Thread(target=_send_signal, daemon=True)
     thread.start()
 
-    beacon = DummyBeacon()
+    beacon = DummyBeacon(ip_version=ip_version)
 
     with pytest.raises(KeyboardInterrupt):
         beacon.run_forever()
