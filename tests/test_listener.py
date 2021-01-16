@@ -1,16 +1,14 @@
 """Tests for `listener` module."""
-import os
-import signal
-import threading
-import time
 from asyncio import AbstractEventLoop
 from typing import Any, Dict, Set
 
 import pytest
 from pytest_mock import MockerFixture
-from zeroconf import IPVersion, ServiceStateChange, Zeroconf
+from zeroconf import IPVersion
 
 from mdns_beacon.listener import BeaconListener
+
+from helpers.contextmanager import raise_keyboard_interrupt
 
 
 @pytest.mark.slow
@@ -55,25 +53,12 @@ def test_beacon_listener(
     expected_services: Set[str],
 ) -> None:
     """Test beacon listener."""
-
-    def _send_signal() -> None:
-        time.sleep(beacon_params["timeout"] + 1)
-        os.kill(os.getpid(), signal.SIGINT)
-
-    thread = threading.Thread(target=_send_signal, daemon=True)
-    thread.start()
-
-    def _on_service_state_change(
-        zeroconf: Zeroconf, service_type: str, name: str, state_change: ServiceStateChange
-    ) -> None:
-        pass
-
     listener = BeaconListener(
-        handlers=[_on_service_state_change],
+        handlers=[lambda *args, **kwargs: None],
         **beacon_params,
     )
 
-    with pytest.raises(KeyboardInterrupt):
+    with raise_keyboard_interrupt(timeout=beacon_params["timeout"] + 1):
         listener.run_forever()
 
     assert expected_services.issubset(listener.services)

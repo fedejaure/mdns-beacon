@@ -1,8 +1,4 @@
 """Tests for `mdns_beacon`.cli module."""
-import os
-import signal
-import threading
-import time
 from asyncio import AbstractEventLoop
 from contextlib import ExitStack as does_not_raise
 from ipaddress import IPv4Address, IPv6Address
@@ -15,6 +11,8 @@ from pytest_mock import MockerFixture
 
 import mdns_beacon
 from mdns_beacon.cli import IpAddressParamType, main
+
+from helpers.contextmanager import raise_keyboard_interrupt
 
 
 @pytest.mark.parametrize(
@@ -70,14 +68,8 @@ def test_blink(
     """Test beacon blink."""
     runner = CliRunner()
 
-    def _send_signal() -> None:
-        time.sleep(5)
-        os.kill(os.getpid(), signal.SIGINT)
-
-    thread = threading.Thread(target=_send_signal, daemon=True)
-    thread.start()
-
-    result = runner.invoke(main, ["blink"] + options)
+    with raise_keyboard_interrupt(timeout=6):
+        result = runner.invoke(main, ["blink"] + options)
 
     assert result.exit_code == 0
     assert expected in result.output
@@ -106,14 +98,8 @@ def test_listen(
     """Test beacon listen."""
     runner = CliRunner()
 
-    def _send_signal() -> None:
-        time.sleep(timeout)
-        os.kill(os.getpid(), signal.SIGINT)
-
-    thread = threading.Thread(target=_send_signal, daemon=True)
-    thread.start()
-
-    result = runner.invoke(main, ["listen"] + options)
+    with raise_keyboard_interrupt(timeout=timeout):
+        result = runner.invoke(main, ["listen"] + options)
 
     assert result.exit_code == 0
     assert expected in result.output

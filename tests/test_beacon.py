@@ -1,8 +1,4 @@
 """Tests for `beacon` module."""
-import os
-import signal
-import threading
-import time
 from asyncio import AbstractEventLoop
 from typing import Any, Dict, Set
 
@@ -11,6 +7,8 @@ from pytest_mock import MockerFixture
 from zeroconf import IPVersion
 
 from mdns_beacon.beacon import Beacon
+
+from helpers.contextmanager import raise_keyboard_interrupt
 
 
 @pytest.mark.slow
@@ -48,17 +46,9 @@ def test_beacon(
     expected_services: Set[str],
 ) -> None:
     """Test beacon."""
-
-    def _send_signal() -> None:
-        time.sleep(2)
-        os.kill(os.getpid(), signal.SIGINT)
-
-    thread = threading.Thread(target=_send_signal, daemon=True)
-    thread.start()
-
     beacon = Beacon(**beacon_params)
 
-    with pytest.raises(KeyboardInterrupt):
+    with raise_keyboard_interrupt(timeout=2):
         beacon.run_forever()
 
     assert expected_services == {s.server for s in beacon.services}

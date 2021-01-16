@@ -1,8 +1,4 @@
 """Tests for `base` module."""
-import os
-import signal
-import threading
-import time
 from asyncio import AbstractEventLoop
 from typing import Optional
 
@@ -11,6 +7,8 @@ from pytest_mock import MockerFixture
 from zeroconf import IPVersion
 
 from mdns_beacon.base import BaseBeacon
+
+from helpers.contextmanager import raise_keyboard_interrupt
 
 
 class DummyBeacon(BaseBeacon):
@@ -33,17 +31,9 @@ def test_run_forever(
     mocker: MockerFixture, safe_loop: AbstractEventLoop, ip_version: Optional[IPVersion]
 ) -> None:
     """Test run forever."""
-
-    def _send_signal() -> None:
-        time.sleep(0.5)
-        os.kill(os.getpid(), signal.SIGINT)
-
-    thread = threading.Thread(target=_send_signal, daemon=True)
-    thread.start()
-
     beacon = DummyBeacon(ip_version=ip_version)
 
-    with pytest.raises(KeyboardInterrupt):
+    with raise_keyboard_interrupt(timeout=0.5):
         beacon.run_forever()
     beacon.stop()
 
