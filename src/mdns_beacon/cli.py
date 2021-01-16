@@ -76,8 +76,9 @@ def blink(
     beacon = Beacon(aliases=[name, *aliases], addresses=list(addresses), port=port)
     try:
         beacon.run_forever()
-    finally:
+    except KeyboardInterrupt:
         console.print("Shutting down ...")
+    finally:
         beacon.stop()
 
 
@@ -140,6 +141,8 @@ def listen(services: Iterable[str]) -> None:
     listener = BeaconListener(services=list(services), handlers=[on_service_state_change])
     try:
         listener.run_forever()
+    except KeyboardInterrupt:
+        console.print("Shutting down ...")
     finally:
         console.clear()
         listener.stop()
