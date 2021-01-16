@@ -57,7 +57,7 @@ def test_beacon_listener(
     """Test beacon listener."""
 
     def _send_signal() -> None:
-        time.sleep(beacon_params["timeout"] + 0.5)
+        time.sleep(beacon_params["timeout"] + 1)
         os.kill(os.getpid(), signal.SIGINT)
 
     thread = threading.Thread(target=_send_signal, daemon=True)

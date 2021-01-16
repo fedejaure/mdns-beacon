@@ -71,7 +71,7 @@ def test_blink(
     runner = CliRunner()
 
     def _send_signal() -> None:
-        time.sleep(2)
+        time.sleep(5)
         os.kill(os.getpid(), signal.SIGINT)
 
     thread = threading.Thread(target=_send_signal, daemon=True)
@@ -87,7 +87,7 @@ def test_blink(
 @pytest.mark.parametrize(
     "options,timeout,expected",
     [
-        ([], 6, "Shutting down ...\n"),
+        ([], 8, "Shutting down ...\n"),
         (["--service", "_http._tcp.local."], 1, "Shutting down ...\n"),
         (
             ["--service", "_http._tcp.local.", "--service", "_hap._tcp.local."],
