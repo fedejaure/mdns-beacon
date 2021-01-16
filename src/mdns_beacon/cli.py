@@ -27,8 +27,8 @@ class IpAddressParamType(click.ParamType):
     """An IPv4Address or IPv6Address parsed via ipaddress.ip_address.
 
     Example:
-        >>> ip = IpAddressParamType()
-        >>> ip.convert("127.0.0.1", None, None)
+        >>> ptype = IpAddressParamType()
+        >>> ptype.convert("127.0.0.1", None, None)
         IPv4Address('127.0.0.1')
     """
 
