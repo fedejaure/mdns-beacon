@@ -13,6 +13,7 @@ from zeroconf import IPVersion, ServiceStateChange, Zeroconf
 from mdns_beacon.listener import BeaconListener
 
 
+@pytest.mark.slow
 @pytest.mark.parametrize(
     "beacon_params,expected_services",
     [

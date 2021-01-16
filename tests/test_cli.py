@@ -51,6 +51,7 @@ def test_ip_address_param_type(
         assert ip == expected
 
 
+@pytest.mark.slow
 @pytest.mark.parametrize(
     "options,expected",
     [
