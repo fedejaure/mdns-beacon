@@ -144,7 +144,6 @@ def listen(services: Iterable[str]) -> None:
     except KeyboardInterrupt:
         console.print("Shutting down ...")
     finally:
-        console.clear()
         listener.stop()
 
 

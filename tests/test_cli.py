@@ -81,3 +81,39 @@ def test_blink(
 
     assert result.exit_code == 0
     assert expected in result.output
+
+
+@pytest.mark.slow
+@pytest.mark.parametrize(
+    "options,timeout,expected",
+    [
+        ([], 6, "Shutting down ...\n"),
+        (["--service", "_http._tcp.local."], 1, "Shutting down ...\n"),
+        (
+            ["--service", "_http._tcp.local.", "--service", "_hap._tcp.local."],
+            1,
+            "Shutting down ...\n",
+        ),
+    ],
+)
+def test_listen(
+    mocker: MockerFixture,
+    safe_loop: AbstractEventLoop,
+    options: List[str],
+    timeout: float,
+    expected: str,
+) -> None:
+    """Test beacon listen."""
+    runner = CliRunner()
+
+    def _send_signal() -> None:
+        time.sleep(timeout)
+        os.kill(os.getpid(), signal.SIGINT)
+
+    thread = threading.Thread(target=_send_signal, daemon=True)
+    thread.start()
+
+    result = runner.invoke(main, ["listen"] + options)
+
+    assert result.exit_code == 0
+    assert expected in result.output
