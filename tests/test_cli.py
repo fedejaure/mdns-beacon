@@ -1,29 +1,105 @@
 """Tests for `mdns_beacon`.cli module."""
+from asyncio import AbstractEventLoop
+from contextlib import ExitStack as does_not_raise
+from ipaddress import IPv4Address, IPv6Address
+from typing import ContextManager, List, Optional, Union
+
+import pytest
+from click.exceptions import BadParameter
 from click.testing import CliRunner
+from pytest_mock import MockerFixture
 
 import mdns_beacon
-from mdns_beacon import cli
+from mdns_beacon.cli import IpAddressParamType, main
+
+from helpers.contextmanager import raise_keyboard_interrupt
 
 
-def test_command_line_interface() -> None:
+@pytest.mark.parametrize(
+    "options,expected",
+    [
+        ([], "Usage: main [OPTIONS]"),
+        (["--help"], "Usage: main [OPTIONS]"),
+        (["--version"], f"main, version { mdns_beacon.__version__ }\n"),
+    ],
+)
+def test_command_line_misc(options: List[str], expected: str) -> None:
     """Test the CLI."""
     runner = CliRunner()
-    result = runner.invoke(cli.main)
+    result = runner.invoke(main, options)
     assert result.exit_code == 0
-    assert "Usage: main [OPTIONS]" in result.output
+    assert expected in result.output
 
 
-def test_command_line_interface_help() -> None:
-    """Test the CLI help option."""
+@pytest.mark.parametrize(
+    "address,raises,expected",
+    [
+        ("127.0.0.1", does_not_raise(), IPv4Address("127.0.0.1")),
+        ("::1", does_not_raise(), IPv6Address("::1")),
+        ("wrong address", pytest.raises(BadParameter), None),
+    ],
+)
+def test_ip_address_param_type(
+    address: str, raises: ContextManager, expected: Optional[Union[IPv4Address, IPv6Address]]
+) -> None:
+    """Test ip address param type."""
+    ptype = IpAddressParamType()
+    with raises:
+        ip = ptype.convert(address, None, None)
+        assert ip == expected
+
+
+@pytest.mark.slow
+@pytest.mark.parametrize(
+    "options,expected",
+    [
+        (["example"], "Shutting down ...\n"),
+        (["example", "--alias", "sub1.example"], "Shutting down ...\n"),
+        (["example", "--alias", "sub1.example", "--address", "127.0.0.1"], "Shutting down ...\n"),
+        (
+            ["example", "--alias", "sub1.example", "--address", "127.0.0.1", "--address", "::1"],
+            "Shutting down ...\n",
+        ),
+    ],
+)
+def test_blink(
+    mocker: MockerFixture, safe_loop: AbstractEventLoop, options: List[str], expected: str
+) -> None:
+    """Test beacon blink."""
     runner = CliRunner()
-    help_result = runner.invoke(cli.main, ["--help"])
-    assert help_result.exit_code == 0
-    assert "Usage: main [OPTIONS]" in help_result.output
+
+    with raise_keyboard_interrupt(timeout=6):
+        result = runner.invoke(main, ["blink"] + options)
+
+    assert result.exit_code == 0
+    assert expected in result.output
 
 
-def test_command_line_interface_version() -> None:
-    """Test the CLI version option."""
+@pytest.mark.slow
+@pytest.mark.parametrize(
+    "options,timeout,expected",
+    [
+        ([], 8, "Shutting down ...\n"),
+        (["--service", "_http._tcp.local."], 1, "Shutting down ...\n"),
+        (
+            ["--service", "_http._tcp.local.", "--service", "_hap._tcp.local."],
+            1,
+            "Shutting down ...\n",
+        ),
+    ],
+)
+def test_listen(
+    mocker: MockerFixture,
+    safe_loop: AbstractEventLoop,
+    options: List[str],
+    timeout: float,
+    expected: str,
+) -> None:
+    """Test beacon listen."""
     runner = CliRunner()
-    help_result = runner.invoke(cli.main, ["--version"])
-    assert help_result.exit_code == 0
-    assert f"main, version { mdns_beacon.__version__ }\n" == help_result.output
+
+    with raise_keyboard_interrupt(timeout=timeout):
+        result = runner.invoke(main, ["listen"] + options)
+
+    assert result.exit_code == 0
+    assert expected in result.output

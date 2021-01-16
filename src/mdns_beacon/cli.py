@@ -27,8 +27,8 @@ class IpAddressParamType(click.ParamType):
     """An IPv4Address or IPv6Address parsed via ipaddress.ip_address.
 
     Example:
-        >>> ip = IpAddressParamType()
-        >>> ip.convert("127.0.0.1", None, None)
+        >>> ptype = IpAddressParamType()
+        >>> ptype.convert("127.0.0.1", None, None)
         IPv4Address('127.0.0.1')
     """
 
@@ -76,6 +76,8 @@ def blink(
     beacon = Beacon(aliases=[name, *aliases], addresses=list(addresses), port=port)
     try:
         beacon.run_forever()
+    except KeyboardInterrupt:
+        console.print("Shutting down ...")
     finally:
         beacon.stop()
 
@@ -136,12 +138,13 @@ def on_service_state_change(
 def listen(services: Iterable[str]) -> None:
     """Listen for services on the local network."""
     print_services()
-    listerner = BeaconListener(services=list(services), handlers=[on_service_state_change])
+    listener = BeaconListener(services=list(services), handlers=[on_service_state_change])
     try:
-        listerner.run_forever()
+        listener.run_forever()
+    except KeyboardInterrupt:
+        console.print("Shutting down ...")
     finally:
-        console.clear()
-        listerner.stop()
+        listener.stop()
 
 
 if __name__ == "__main__":
