@@ -10,12 +10,23 @@ logger = logging.getLogger(__name__)
 
 
 class BaseBeacon(ABC):
-    """Base mDNS Beacon."""
+    """mDNS Beacon base class.
+
+    Note:
+        Derived beacons must override the `_execute` method.
+
+    Attributes:
+        ip_version: IP protocol version to use.
+    """
 
     _zeroconf: Optional[Zeroconf] = None
 
     def __init__(self, ip_version: Optional[IPVersion] = None) -> None:
-        """Init a mDNS Beacon instance."""
+        """Init a mDNS Beacon instance.
+
+        Args:
+            ip_version: IP protocol version to use.
+        """
         self.ip_version = ip_version
 
     @property
@@ -26,7 +37,11 @@ class BaseBeacon(ABC):
         return self._zeroconf
 
     def stop(self) -> None:
-        """Stop the Beacon."""
+        """Stop Beacon.
+
+        Ends zeroconf background threads, and prevent zeroconf instance from
+        servicing further queries.
+        """
         logger.debug("Stoping zeroconf")
         self.zeroconf.close()
         self._zeroconf = None
@@ -39,7 +54,7 @@ class BaseBeacon(ABC):
         """
 
     def run_forever(self) -> None:
-        """Run beacon."""
+        """Run beacon forever."""
         self._execute()
         logger.debug("Starting forever loop")
         loop = asyncio.get_event_loop()
