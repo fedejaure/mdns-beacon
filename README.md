@@ -12,7 +12,7 @@
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
 
-Multicast DNS (mDNS) Beacon to announce multiple CNAME aliases across your local network.
+Multicast DNS (mDNS) Beacon to announce multiple CNAME aliases across your local network. Under development. Use by your own risk❗
 
 
 * GitHub repo: <https://github.com/fedejaure/mdns-beacon.git>
@@ -22,15 +22,62 @@ Multicast DNS (mDNS) Beacon to announce multiple CNAME aliases across your local
 
 ## Features
 
-* TODO
+* ✅ Announce multiple aliases on the local network.
+* ✅ Listening utility to discover services during development.
+* ❌ Run as Unix daemon.
+* ❌ Configuration file.
+* ❌ Windows support.
 
 ## Quickstart
 
-TODO
+Install `mdns-beacon` from the [Python Package Index][pypi]:
+
+```
+$ pip install mdns-beacon
+```
+
+#### Usage
+
+```
+$ mdns-beacon --help
+Usage: mdns-beacon [OPTIONS] COMMAND [ARGS]...
+
+  Simple multicast DNS (mDNS) command line interface utility.
+
+Options:
+  --version  Show the version and exit.
+  --help     Show this message and exit.
+
+Commands:
+  blink   Announce aliases on the local network.
+  listen  Listen for services on the local network.
+```
+
+Announce an example service:
+
+```
+$ mdns-beacon blink example --alias sub1.example --address 127.0.0.1
+
+```
+
+Listen to a specific service type:
+
+```
+$ mdns-beacon listen --service _http._tcp.local.
+                                          🚨📡 mDNS Beacon Listener 📡🚨                                          
+┏━━━━┳━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┳━━━━━┓
+┃ #  ┃ Type               ┃ Name                             ┃ Address IPv4  ┃ Port  ┃ Server              ┃ TTL ┃
+┡━━━━╇━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━╇━━━━━┩
+│ 0  │ _http._tcp.local.  │ example._http._tcp.local.        │ 127.0.0.1     │ 80    │ example.local.      │ 120 │
+│ 1  │ _http._tcp.local.  │ sub1.example._http._tcp.local.   │ 127.0.0.1     │ 80    │ sub1.example.local. │ 120 │
+└────┴────────────────────┴──────────────────────────────────┴───────────────┴───────┴─────────────────────┴─────┘
+Listen for services (Press CTRL+C to quit) ...
+```
 
 ## Credits
 
 This package was created with [Cookiecutter][cookiecutter] and the [fedejaure/cookiecutter-modern-pypackage][cookiecutter-modern-pypackage] project template.
 
 [cookiecutter]: https://github.com/cookiecutter/cookiecutter
-[cookiecutter-modern-pypackage]: https://github.com/fedejaure/cookiecutter-modern-pypackage/tree/develops
+[cookiecutter-modern-pypackage]: https://github.com/fedejaure/cookiecutter-modern-pypackage
+[pypi]: https://pypi.org/
