@@ -10,7 +10,14 @@ logger = logging.getLogger(__name__)
 
 
 class BeaconListener(BaseBeacon):
-    """mDNS Beacon listener."""
+    """mDNS Beacon listener.
+
+    Attributes:
+        handlers: Service listeners or functions to be called when a
+            service is added, updated or removed.
+        services: Fully qualified service type names list.
+        timeout: Seconds to wait for any responses.
+    """
 
     _DEFAULT_SERVICES = {"_http._tcp.local.", "_hap._tcp.local."}
 
@@ -22,7 +29,16 @@ class BeaconListener(BaseBeacon):
         *args: Any,
         **kwargs: Any,
     ) -> None:
-        """Init a mDNS Beacon listener."""
+        """Init a mDNS Beacon listener.
+
+        Args:
+            handlers: Service listeners or functions to be called when a
+                service is added, updated or removed.
+            services: Fully qualified service type names list.
+            timeout: Seconds to wait for any responses.
+            *args: Variable length argument list.
+            **kwargs: Arbitrary keyword arguments.
+        """
         super().__init__(*args, **kwargs)
         self.handlers = handlers
         self.timeout = timeout
@@ -30,7 +46,7 @@ class BeaconListener(BaseBeacon):
 
     @property
     def default_services(self) -> Set[str]:
-        """Find default services."""
+        """Return default services to listen on local networks."""
         return self._DEFAULT_SERVICES | set(
             ZeroconfServiceTypes.find(zc=self.zeroconf, timeout=self.timeout)
         )
