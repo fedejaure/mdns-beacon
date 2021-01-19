@@ -80,10 +80,10 @@ def test_blink(
     "options,timeout,expected",
     [
         ([], 8, "Shutting down ...\n"),
-        (["--service", "_http._tcp.local."], 1, "Shutting down ...\n"),
+        (["--service", "_http._tcp.local."], 2, "Shutting down ...\n"),
         (
             ["--service", "_http._tcp.local.", "--service", "_hap._tcp.local."],
-            1,
+            2,
             "Shutting down ...\n",
         ),
     ],
