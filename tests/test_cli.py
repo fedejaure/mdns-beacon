@@ -10,7 +10,8 @@ from click.testing import CliRunner
 from pytest_mock import MockerFixture
 
 import mdns_beacon
-from mdns_beacon.cli import IpAddressParamType, main
+from mdns_beacon.cli.main import main
+from mdns_beacon.cli.types import IpAddressParamType
 
 from helpers.contextmanager import raise_keyboard_interrupt
 
@@ -23,7 +24,7 @@ from helpers.contextmanager import raise_keyboard_interrupt
         (["--version"], f"main, version { mdns_beacon.__version__ }\n"),
     ],
 )
-def test_command_line_misc(options: List[str], expected: str) -> None:
+def test_command_line_interface(options: List[str], expected: str) -> None:
     """Test the CLI."""
     runner = CliRunner()
     result = runner.invoke(main, options)

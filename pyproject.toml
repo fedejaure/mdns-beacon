@@ -27,7 +27,7 @@ classifiers=[
 
 
 [tool.poetry.scripts]
-mdns-beacon = 'mdns_beacon.cli:main'
+mdns-beacon = 'mdns_beacon.cli.main:main'
 
 
 [tool.poetry.dependencies]
