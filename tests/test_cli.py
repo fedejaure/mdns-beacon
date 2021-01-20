@@ -3,6 +3,7 @@ from asyncio import AbstractEventLoop
 from contextlib import ExitStack as does_not_raise
 from ipaddress import IPv4Address, IPv6Address
 from typing import ContextManager, List, Optional, Union
+from uuid import uuid4
 
 import pytest
 from click.exceptions import BadParameter
@@ -67,8 +68,11 @@ def test_blink(
     mocker: MockerFixture, safe_loop: AbstractEventLoop, options: List[str], expected: str
 ) -> None:
     """Test beacon blink."""
-    runner = CliRunner()
+    # Ugly hack to prevent collisions during parallel tests
+    uuid = uuid4()
+    options = [opt.replace("example", f"example-{uuid}") for opt in options]  # TODO: Fix me
 
+    runner = CliRunner()
     with raise_keyboard_interrupt(timeout=6):
         result = runner.invoke(main, ["blink"] + options)
 
