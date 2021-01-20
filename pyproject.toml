@@ -35,7 +35,7 @@ python = "<3.10,>=3.6.1"
 
 click = "^7.1.2"
 zeroconf = "^0.28.8"
-rich = "^9.1.0"
+rich = "^9.8.2"
 python-slugify = "^4.0.1"
 
 
