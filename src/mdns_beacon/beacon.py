@@ -1,7 +1,7 @@
 """Beacon module."""
 import logging
 from ipaddress import IPv4Address, IPv6Address, ip_address
-from typing import Any, List, Optional, Union
+from typing import Any, List, Literal, Optional, Union
 
 from slugify import slugify
 from zeroconf import ServiceInfo
@@ -9,6 +9,8 @@ from zeroconf import ServiceInfo
 from .base import BaseBeacon
 
 logger = logging.getLogger(__name__)
+
+PROTOCOL = Literal["tcp", "udp"]
 
 
 class Beacon(BaseBeacon):
@@ -35,7 +37,7 @@ class Beacon(BaseBeacon):
         addresses: Optional[List[Union[IPv4Address, IPv6Address]]] = None,
         port: int = 80,
         type_: str = "http",
-        protocol: str = "tcp",
+        protocol: PROTOCOL = "tcp",
         ttl: int = 60,
         *args: Any,
         **kwargs: Any,

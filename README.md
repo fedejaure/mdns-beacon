@@ -56,7 +56,7 @@ Commands:
 Announce an example service:
 
 ```
-$ mdns-beacon blink example --alias sub1.example --address 127.0.0.1
+$ mdns-beacon blink example --alias sub1.example --address 127.0.0.1 --type http --protocol tcp
 
 ```
 

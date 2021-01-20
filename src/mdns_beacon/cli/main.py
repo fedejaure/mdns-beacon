@@ -8,6 +8,7 @@ from rich.table import Table
 from zeroconf import IPVersion, ServiceStateChange, Zeroconf
 
 from mdns_beacon import Beacon, BeaconListener, __version__
+from mdns_beacon.beacon import PROTOCOL
 from mdns_beacon.cli.types import IpAddress
 
 console = Console()
@@ -46,14 +47,30 @@ def main() -> None:
 @click.option(
     "--port", "port", default=80, type=int, help="Port to announce on the local network."
 )
+@click.option("--type", "type_", default="http", type=click.STRING, help="Service type.")
+@click.option(
+    "--protocol",
+    "protocol",
+    default="tcp",
+    type=click.Choice(choices=("tcp", "udp"), case_sensitive=True),
+    help="Service protocol.",
+)
 def blink(
     name: str,
     aliases: Iterable[str],
     addresses: Iterable[Union[IPv4Address, IPv6Address]],
     port: int,
+    type_: str,
+    protocol: PROTOCOL,
 ) -> None:
     """Announce aliases on the local network."""
-    beacon = Beacon(aliases=[name, *aliases], addresses=list(addresses), port=port)
+    beacon = Beacon(
+        aliases=[name, *aliases],
+        addresses=list(addresses),
+        port=port,
+        type_=type_,
+        protocol=protocol,
+    )
     try:
         beacon.run_forever()
     except KeyboardInterrupt:

@@ -55,9 +55,12 @@ def test_ip_address_param_type(
 @pytest.mark.parametrize(
     "options,expected",
     [
-        (["example"], "Shutting down ...\n"),
+        (["example", "--protocol", "tcp"], "Shutting down ...\n"),
         (["example", "--alias", "sub1.example"], "Shutting down ...\n"),
-        (["example", "--alias", "sub1.example", "--address", "127.0.0.1"], "Shutting down ...\n"),
+        (
+            ["example", "--alias", "sub1.example", "--address", "127.0.0.1", "--type", "http"],
+            "Shutting down ...\n",
+        ),
         (
             ["example", "--alias", "sub1.example", "--address", "127.0.0.1", "--address", "::1"],
             "Shutting down ...\n",
