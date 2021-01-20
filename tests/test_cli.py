@@ -12,7 +12,7 @@ from pytest_mock import MockerFixture
 
 import mdns_beacon
 from mdns_beacon.cli.main import main
-from mdns_beacon.cli.types import IpAddressParamType
+from mdns_beacon.cli.types import IpAddress
 
 from helpers.contextmanager import raise_keyboard_interrupt
 
@@ -45,7 +45,7 @@ def test_ip_address_param_type(
     address: str, raises: ContextManager, expected: Optional[Union[IPv4Address, IPv6Address]]
 ) -> None:
     """Test ip address param type."""
-    ptype = IpAddressParamType()
+    ptype = IpAddress()
     with raises:
         ip = ptype.convert(address, None, None)
         assert ip == expected

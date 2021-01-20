@@ -5,11 +5,11 @@ from typing import AnyStr, Optional, Union
 import click
 
 
-class IpAddressParamType(click.ParamType):
+class IpAddress(click.ParamType):
     """An IPv4Address or IPv6Address parsed via ipaddress.ip_address.
 
     Example:
-        >>> ptype = IpAddressParamType()
+        >>> ptype = IpAddress()
         >>> ptype.convert("127.0.0.1", None, None)
         IPv4Address('127.0.0.1')
     """

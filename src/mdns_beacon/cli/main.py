@@ -8,7 +8,7 @@ from rich.table import Table
 from zeroconf import IPVersion, ServiceStateChange, Zeroconf
 
 from mdns_beacon import Beacon, BeaconListener, __version__
-from mdns_beacon.cli.types import IpAddressParamType
+from mdns_beacon.cli.types import IpAddress
 
 console = Console()
 
@@ -40,7 +40,7 @@ def main() -> None:
     "addresses",
     default=[],
     multiple=True,
-    type=IpAddressParamType(),
+    type=IpAddress(),
     help="Address to announce on the local network.",
 )
 @click.option(
