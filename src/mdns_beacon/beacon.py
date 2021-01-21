@@ -1,9 +1,10 @@
 """Beacon module."""
 import logging
 from ipaddress import IPv4Address, IPv6Address, ip_address
-from typing import Any, List, Literal, Optional, Union
+from typing import Any, List, Optional, Union
 
 from slugify import slugify
+from typing_extensions import Literal
 from zeroconf import ServiceInfo
 
 from .base import BaseBeacon

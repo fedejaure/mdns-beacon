@@ -37,6 +37,7 @@ click = "^7.1.2"
 zeroconf = "^0.28.8"
 rich = "^9.8.2"
 python-slugify = "^4.0.1"
+typing-extensions = "^3.7.4"
 
 
 [tool.poetry.dev-dependencies]
