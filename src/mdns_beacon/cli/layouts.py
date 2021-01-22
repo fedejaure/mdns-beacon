@@ -1,6 +1,8 @@
 """Console layout for mdns-beacon."""
+from abc import ABC, abstractmethod
 from typing import Any, Dict, Optional
 
+from rich.console import RenderableType
 from rich.live import Live
 from rich.spinner import Spinner
 from rich.table import Table
@@ -8,7 +10,50 @@ from rich.text import Text
 from zeroconf import IPVersion, ServiceStateChange, Zeroconf
 
 
-class ListenLayout:
+class BaseLayout(ABC):
+    """Base cli layout.
+
+    Note:
+        Derived layouts must override the `renderable` property.
+    """
+
+    def __init__(self, live: Live) -> None:
+        """Init layout."""
+        self.live = live
+        self.live.update(self.renderable)
+
+    @property
+    @abstractmethod
+    def renderable(self) -> RenderableType:
+        """Get the renderable layout.
+
+        Property that derived layouts must override.
+        """
+
+
+class BlinkLayout(BaseLayout):
+    """Blink cli layout."""
+
+    _spinner: Optional[Spinner] = None
+
+    @property
+    def spinner(self) -> Spinner:
+        """Blink spinner status annimation."""
+        if not self._spinner:
+            self._spinner = Spinner(
+                "dots", text=Text("Announcing services (Press CTRL+C to quit) ...", style="green")
+            )
+        return self._spinner
+
+    @property
+    def renderable(self) -> RenderableType:
+        """Blink renderable layout (spinner with status)."""
+        layout = Table.grid(padding=1, expand=True)
+        layout.add_row(self.spinner)
+        return layout
+
+
+class ListenLayout(BaseLayout):
     """Listen cli layout."""
 
     services: Dict[str, Any] = {}
@@ -22,11 +67,6 @@ class ListenLayout:
         "TTL",
     ]
     _spinner: Optional[Spinner] = None
-
-    def __init__(self, live: Live) -> None:
-        """Init Layout."""
-        self.live = live
-        self.live.update(self.renderable)
 
     @property
     def spinner(self) -> Spinner:
@@ -59,7 +99,7 @@ class ListenLayout:
         return table
 
     @property
-    def renderable(self) -> Table:
+    def renderable(self) -> RenderableType:
         """Listen renderable layout (a table with spinner and status)."""
         layout = Table.grid(padding=1, expand=True)
         layout.add_row(self.services_table)

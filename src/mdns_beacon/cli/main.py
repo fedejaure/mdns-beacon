@@ -8,7 +8,7 @@ from rich.live import Live
 
 from mdns_beacon import Beacon, BeaconListener, __version__
 from mdns_beacon.beacon import PROTOCOL
-from mdns_beacon.cli.layouts import ListenLayout
+from mdns_beacon.cli.layouts import BlinkLayout, ListenLayout
 from mdns_beacon.cli.types import IpAddress
 
 console = Console()
@@ -53,19 +53,21 @@ def blink(
     protocol: PROTOCOL,
 ) -> None:
     """Announce aliases on the local network."""
-    beacon = Beacon(
-        aliases=[name, *aliases],
-        addresses=list(addresses),
-        port=port,
-        type_=type_,
-        protocol=protocol,
-    )
-    try:
-        beacon.run_forever()
-    except KeyboardInterrupt:
-        console.print("Shutting down ...")
-    finally:
-        beacon.stop()
+    with Live(console=console, transient=True, auto_refresh=True) as live:
+        BlinkLayout(live=live)
+        beacon = Beacon(
+            aliases=[name, *aliases],
+            addresses=list(addresses),
+            port=port,
+            type_=type_,
+            protocol=protocol,
+        )
+        try:
+            beacon.run_forever()
+        except KeyboardInterrupt:
+            console.print("Shutting down ...")
+        finally:
+            beacon.stop()
 
 
 @main.command()
