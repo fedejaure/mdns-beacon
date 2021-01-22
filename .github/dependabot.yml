@@ -4,11 +4,32 @@ updates:
     directory: "/"
     schedule:
       interval: daily
+      time: "08:00"
+      timezone: "Europe/Amsterdam"
+    labels:
+      - "dependencies"
+      - "github_actions"
+    open-pull-requests-limit: 99
+    target-branch: "develop"
   - package-ecosystem: pip
     directory: "/docs"
     schedule:
       interval: daily
+      time: "08:00"
+      timezone: "Europe/Amsterdam"
+    labels:
+      - "dependencies"
+      - "python"
+    open-pull-requests-limit: 99
+    target-branch: "develop"
   - package-ecosystem: pip
     directory: "/"
     schedule:
       interval: daily
+      time: "08:00"
+      timezone: "Europe/Amsterdam"
+    labels:
+      - "dependencies"
+      - "python"
+    open-pull-requests-limit: 99
+    target-branch: "develop"
