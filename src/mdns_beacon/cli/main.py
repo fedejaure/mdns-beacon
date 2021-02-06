@@ -1,8 +1,9 @@
 """Console script for mdns-beacon."""
 from ipaddress import IPv4Address, IPv6Address
-from typing import Iterable, Tuple, Union
+from typing import Dict, Iterable, Tuple, Union
 
 import click
+from click_option_group import MutuallyExclusiveOptionGroup, optgroup
 from rich.console import Console
 from rich.live import Live
 
@@ -44,6 +45,28 @@ def main() -> None:
     type=click.Choice(choices=("tcp", "udp"), case_sensitive=True),
     help="Service protocol.",
 )
+@optgroup.group(
+    "Beacon properties",
+    cls=MutuallyExclusiveOptionGroup,
+    help="Properties to announce on the local network.",
+)
+@optgroup.option(
+    "--txt",
+    "txt",
+    type=str,
+    callback=lambda ctx, param, value: value.encode("utf8"),
+    help="Properties to announce on the local network as `text`.",
+    default=b"",
+)
+@optgroup.option(
+    "--property",
+    "properties",
+    type=click.Tuple([str, str]),
+    callback=lambda ctx, param, value: {k.encode("utf8"): v.encode("utf8") for k, v in value},
+    help="Properties to announce on the local network (key value).",
+    multiple=True,
+    default=[],
+)
 def blink(
     name: str,
     aliases: Iterable[str],
@@ -51,6 +74,8 @@ def blink(
     port: int,
     type_: str,
     protocol: PROTOCOL,
+    txt: bytes,
+    properties: Dict[str, bytes],
 ) -> None:
     """Announce aliases on the local network."""
     with Live(console=console, transient=True, auto_refresh=True) as live:
@@ -61,6 +86,7 @@ def blink(
             port=port,
             type_=type_,
             protocol=protocol,
+            properties=properties or txt,
         )
         try:
             beacon.run_forever()
