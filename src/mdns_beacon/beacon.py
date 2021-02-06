@@ -1,7 +1,7 @@
 """Beacon module."""
 import logging
 from ipaddress import IPv4Address, IPv6Address, ip_address
-from typing import Any, List, Optional, Union
+from typing import Any, Dict, List, Optional, Union
 
 from slugify import slugify
 from typing_extensions import Literal
@@ -23,7 +23,8 @@ class Beacon(BaseBeacon):
         port: Port that the service runs on.
         type_: Service type.
         protocol: Service protocol.
-        ttl: ttl used for the announce of the service.
+        ttl: TTL used for the announce of the service.
+        properties: Dict of properties (or a bytes object with the content of the `text` field).
         *args: Variable length argument list.
         **kwargs: Arbitrary keyword arguments.
     """
@@ -40,6 +41,7 @@ class Beacon(BaseBeacon):
         type_: str = "http",
         protocol: PROTOCOL = "tcp",
         ttl: int = 60,
+        properties: Union[bytes, Dict[str, Any]] = None,
         *args: Any,
         **kwargs: Any,
     ) -> None:
@@ -51,7 +53,9 @@ class Beacon(BaseBeacon):
             port: Port that the service runs on.
             type_: Service type.
             protocol: Service protocol.
-            ttl: ttl used for the announce of the service.
+            ttl: TTL used for the announce of the service.
+            properties: Dict of properties (or a bytes object with the
+                content of the `text` field).
             *args: Variable length argument list.
             **kwargs: Arbitrary keyword arguments.
         """
@@ -61,6 +65,7 @@ class Beacon(BaseBeacon):
         self.port = port
         self.type_ = type_
         self.protocol = protocol
+        self.properties = properties or b""
         self.ttl = ttl
 
     def _build_service_host(self, name: str) -> str:
@@ -104,6 +109,7 @@ class Beacon(BaseBeacon):
                     parsed_addresses=[str(addr) for addr in self.addresses],
                     port=self.port,
                     host_ttl=self.ttl,
+                    properties=self.properties,
                     server=self._build_service_host(alias),
                 )
                 for alias in self.aliases
