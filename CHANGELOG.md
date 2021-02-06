@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - `show` option to `listen` command.
 - Mutually exclusive `txt` and `property` options to the `blink` command.
+- `weight` option to the blink command.
+- `priority` option to the blink command.
 
 ## [0.2.0] - 2021-01-22
 ### Changed

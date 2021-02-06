@@ -45,6 +45,20 @@ def main() -> None:
     type=click.Choice(choices=("tcp", "udp"), case_sensitive=True),
     help="Service protocol.",
 )
+@click.option(
+    "--weight",
+    "weight",
+    default=0,
+    type=int,
+    help="Service weight.",
+)
+@click.option(
+    "--priority",
+    "priority",
+    default=0,
+    type=int,
+    help="Service priority.",
+)
 @optgroup.group(
     "Beacon properties",
     cls=MutuallyExclusiveOptionGroup,
@@ -74,6 +88,8 @@ def blink(
     port: int,
     type_: str,
     protocol: PROTOCOL,
+    weight: int,
+    priority: int,
     txt: bytes,
     properties: Dict[str, bytes],
 ) -> None:
@@ -86,6 +102,8 @@ def blink(
             port=port,
             type_=type_,
             protocol=protocol,
+            weight=weight,
+            priority=priority,
             properties=properties or txt,
         )
         try:
