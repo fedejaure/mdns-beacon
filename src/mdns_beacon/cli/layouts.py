@@ -1,6 +1,6 @@
 """Console layout for mdns-beacon."""
 from abc import ABC, abstractmethod
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 from rich.console import RenderableType
 from rich.live import Live
@@ -57,16 +57,43 @@ class ListenLayout(BaseLayout):
     """Listen cli layout."""
 
     services: Dict[str, Any] = {}
-    TABLE_SERVICES_COLUMNS = [
-        "#",
-        "Type",
-        "Name",
-        "Address IPv4",
-        "Port",
-        "Server",
-        "TTL",
-    ]
+    TABLE_SERVICES_COLUMNS = {
+        "type": "Type",
+        "name": "Name",
+        "ipv4_address": "Address IPv4",
+        "ipv6_address": "Address IPv6",
+        "port": "Port",
+        "server": "Server",
+        "ttl": "TTL",
+        "weight": "Weight",
+        "priority": "Priority",
+        "text": "TXT",
+        "properties": "Properties",
+    }
+    DEFAULT_SHOW_COLUMNS = (
+        "type",
+        "name",
+        "ipv4_address",
+        "port",
+        "server",
+        "ttl",
+    )
+
     _spinner: Optional[Spinner] = None
+
+    def __init__(
+        self,
+        show_columns: Optional[Union[Tuple[str], List[str]]] = None,
+        *args: Any,
+        **kwargs: Any,
+    ) -> None:
+        """Init listen layout."""
+        self.show_columns = show_columns or self.DEFAULT_SHOW_COLUMNS
+        if not set(self.show_columns).issubset(self.TABLE_SERVICES_COLUMNS.keys()):
+            raise ValueError(
+                "Unknown fields %s", set(self.show_columns) - self.TABLE_SERVICES_COLUMNS.keys()
+            )
+        super().__init__(*args, **kwargs)
 
     @property
     def spinner(self) -> Spinner:
@@ -88,14 +115,12 @@ class ListenLayout(BaseLayout):
             ":satellite_antenna::police_car_light:"
         )
 
-        for key in self.TABLE_SERVICES_COLUMNS:
-            table.add_column(key, no_wrap=True)
+        table.add_column("#", no_wrap=True)
+        for c in self.show_columns:
+            table.add_column(self.TABLE_SERVICES_COLUMNS[c], no_wrap=True)
 
         for index, service in enumerate(self.services.values()):
-            table.add_row(
-                str(index),
-                *[str(v) for k, v in service.items() if k in self.TABLE_SERVICES_COLUMNS],
-            )
+            table.add_row(str(index), *[str(service[c]) for c in self.show_columns])
         return table
 
     @property
@@ -117,11 +142,16 @@ class ListenLayout(BaseLayout):
             info = zeroconf.get_service_info(service_type, name)
             if info:
                 self.services[service_id] = {
-                    "Type": info.type,
-                    "Name": info.name,
-                    "Address IPv4": ",".join(info.parsed_addresses(IPVersion.V4Only)),
-                    "Port": info.port,
-                    "Server": info.server,
-                    "TTL": info.host_ttl,
+                    "type": info.type,
+                    "name": info.name,
+                    "ipv4_address": ",".join(info.parsed_addresses(IPVersion.V4Only)),
+                    "ipv6_address": ",".join(info.parsed_addresses(IPVersion.V6Only)),
+                    "port": info.port,
+                    "server": info.server,
+                    "ttl": info.host_ttl,
+                    "weight": info.weight,
+                    "priority": info.priority,
+                    "text": info.text,
+                    "properties": info.properties,
                 }
         self.live.update(self.renderable)
