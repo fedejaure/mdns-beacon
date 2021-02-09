@@ -17,10 +17,27 @@ class BaseLayout(ABC):
         Derived layouts must override the `renderable` property.
     """
 
+    _spinner: Optional[Spinner] = None
+
     def __init__(self, live: Live) -> None:
         """Init layout."""
         self.live = live
         self.live.update(self.renderable)
+
+    @property
+    @abstractmethod
+    def spinner_text(self) -> str:
+        """Get the spinner text to render.
+
+        Property that derived layouts must override.
+        """
+
+    @property
+    def spinner(self) -> Spinner:
+        """Spinner status annimation."""
+        if not self._spinner:
+            self._spinner = Spinner("dots", text=Text(self.spinner_text, style="green"))
+        return self._spinner
 
     @property
     @abstractmethod
@@ -34,16 +51,7 @@ class BaseLayout(ABC):
 class BlinkLayout(BaseLayout):
     """Blink cli layout."""
 
-    _spinner: Optional[Spinner] = None
-
-    @property
-    def spinner(self) -> Spinner:
-        """Blink spinner status annimation."""
-        if not self._spinner:
-            self._spinner = Spinner(
-                "dots", text=Text("Announcing services (Press CTRL+C to quit) ...", style="green")
-            )
-        return self._spinner
+    spinner_text = "Announcing services (Press CTRL+C to quit) ..."
 
     @property
     def renderable(self) -> RenderableType:
@@ -79,7 +87,7 @@ class ListenLayout(BaseLayout):
         "ttl",
     )
 
-    _spinner: Optional[Spinner] = None
+    spinner_text = "Listen for services (Press CTRL+C to quit) ..."
 
     def __init__(
         self,
@@ -94,15 +102,6 @@ class ListenLayout(BaseLayout):
                 "Unknown fields %s", set(self.show_columns) - self.TABLE_SERVICES_COLUMNS.keys()
             )
         super().__init__(*args, **kwargs)
-
-    @property
-    def spinner(self) -> Spinner:
-        """Listen spinner status annimation."""
-        if not self._spinner:
-            self._spinner = Spinner(
-                "dots", text=Text("Listen for services (Press CTRL+C to quit) ...", style="green")
-            )
-        return self._spinner
 
     @property
     def services_table(self) -> Table:
