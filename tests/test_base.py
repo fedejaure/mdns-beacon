@@ -3,7 +3,6 @@ from asyncio import AbstractEventLoop
 from typing import Optional
 
 import pytest
-from pytest_mock import MockerFixture
 from zeroconf import IPVersion
 
 from mdns_beacon.base import BaseBeacon
@@ -27,9 +26,7 @@ class DummyBeacon(BaseBeacon):
         IPVersion.V6Only,
     ],
 )
-def test_run_forever(
-    mocker: MockerFixture, safe_loop: AbstractEventLoop, ip_version: Optional[IPVersion]
-) -> None:
+def test_run_forever(safe_loop: AbstractEventLoop, ip_version: Optional[IPVersion]) -> None:
     """Test run forever."""
     beacon = DummyBeacon(ip_version=ip_version)
 
