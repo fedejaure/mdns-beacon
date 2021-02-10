@@ -54,7 +54,7 @@ class BlinkLayout(BaseLayout):
     spinner_text = "Announcing services (Press CTRL+C to quit) ..."
 
     @property
-    def renderable(self) -> RenderableType:
+    def renderable(self) -> Table:
         """Blink renderable layout (spinner with status)."""
         layout = Table.grid(padding=1, expand=True)
         layout.add_row(self.spinner)
