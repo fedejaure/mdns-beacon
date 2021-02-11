@@ -76,6 +76,7 @@ branch = true
 source = ["mdns_beacon"]
 
 [tool.coverage.report]
+fail_under = 90
 exclude_lines = [
   "pragma: no cover",
   "def __repr__",
