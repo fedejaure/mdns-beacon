@@ -150,7 +150,9 @@ class ListenLayout(BaseLayout):
                     "ttl": info.host_ttl,
                     "weight": info.weight,
                     "priority": info.priority,
-                    "text": info.text,
-                    "properties": info.properties,
+                    "text": info.text.decode("utf8"),
+                    "properties": {
+                        k.decode("utf8"): v.decode("utf8") for k, v in info.properties.items()
+                    },
                 }
         self.live.update(self.renderable)
