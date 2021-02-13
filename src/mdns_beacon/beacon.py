@@ -1,7 +1,7 @@
 """Beacon module."""
 import logging
 from ipaddress import IPv4Address, IPv6Address, ip_address
-from typing import Any, List, Optional, Union
+from typing import Any, Dict, List, Optional, Union
 
 from slugify import slugify
 from typing_extensions import Literal
@@ -23,7 +23,10 @@ class Beacon(BaseBeacon):
         port: Port that the service runs on.
         type_: Service type.
         protocol: Service protocol.
-        ttl: ttl used for the announce of the service.
+        ttl: TTL used for the announce of the service.
+        weight: Weight of the service.
+        priority: Priority of the service.
+        properties: Dict of properties (or a bytes object with the content of the `text` field).
         *args: Variable length argument list.
         **kwargs: Arbitrary keyword arguments.
     """
@@ -40,6 +43,9 @@ class Beacon(BaseBeacon):
         type_: str = "http",
         protocol: PROTOCOL = "tcp",
         ttl: int = 60,
+        weight: int = 0,
+        priority: int = 0,
+        properties: Union[bytes, Dict[str, Any]] = None,
         *args: Any,
         **kwargs: Any,
     ) -> None:
@@ -51,7 +57,11 @@ class Beacon(BaseBeacon):
             port: Port that the service runs on.
             type_: Service type.
             protocol: Service protocol.
-            ttl: ttl used for the announce of the service.
+            ttl: TTL used for the announce of the service.
+            weight: Weight of the service.
+            priority: Priority of the service.
+            properties: Dict of properties (or a bytes object with the
+                content of the `text` field) of the service.
             *args: Variable length argument list.
             **kwargs: Arbitrary keyword arguments.
         """
@@ -62,6 +72,9 @@ class Beacon(BaseBeacon):
         self.type_ = type_
         self.protocol = protocol
         self.ttl = ttl
+        self.weight = weight
+        self.priority = priority
+        self.properties = properties or b""
 
     def _build_service_host(self, name: str) -> str:
         """Build service host for a given name.
@@ -104,6 +117,9 @@ class Beacon(BaseBeacon):
                     parsed_addresses=[str(addr) for addr in self.addresses],
                     port=self.port,
                     host_ttl=self.ttl,
+                    weight=self.weight,
+                    priority=self.priority,
+                    properties=self.properties,
                     server=self._build_service_host(alias),
                 )
                 for alias in self.aliases

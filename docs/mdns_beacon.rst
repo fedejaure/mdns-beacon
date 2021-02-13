@@ -1,19 +1,19 @@
 mdns\_beacon package
 ====================
 
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   mdns_beacon.cli
+
 Submodules
 ----------
 
-mdns\_beacon.cli module
------------------------
-
-.. automodule:: mdns_beacon.cli
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 mdns\_beacon.base module
---------------------------------
+------------------------
 
 .. automodule:: mdns_beacon.base
    :members:
@@ -21,7 +21,7 @@ mdns\_beacon.base module
    :show-inheritance:
 
 mdns\_beacon.beacon module
---------------------------------
+--------------------------
 
 .. automodule:: mdns_beacon.beacon
    :members:
@@ -29,7 +29,7 @@ mdns\_beacon.beacon module
    :show-inheritance:
 
 mdns\_beacon.listener module
---------------------------------
+----------------------------
 
 .. automodule:: mdns_beacon.listener
    :members:
