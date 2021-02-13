@@ -3,7 +3,6 @@ from asyncio import AbstractEventLoop
 from typing import Any, Dict, Set
 
 import pytest
-from pytest_mock import MockerFixture
 from zeroconf import IPVersion
 
 from mdns_beacon.listener import BeaconListener
@@ -47,7 +46,6 @@ from helpers.contextmanager import raise_keyboard_interrupt
     ],
 )
 def test_beacon_listener(
-    mocker: MockerFixture,
     safe_loop: AbstractEventLoop,
     beacon_params: Dict[str, Any],
     expected_services: Set[str],

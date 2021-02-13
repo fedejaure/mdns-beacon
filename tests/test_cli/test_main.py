@@ -1,18 +1,14 @@
-"""Tests for `mdns_beacon`.cli module."""
+"""Tests for `mdns_beacon.cli.main` module."""
 from asyncio import AbstractEventLoop
-from contextlib import ExitStack as does_not_raise
-from ipaddress import IPv4Address, IPv6Address
-from typing import ContextManager, List, Optional, Union
+from typing import List
 from uuid import uuid4
 
 import pytest
-from click.exceptions import BadParameter
 from click.testing import CliRunner
 from pytest_mock import MockerFixture
 
 import mdns_beacon
 from mdns_beacon.cli.main import main
-from mdns_beacon.cli.types import IpAddress
 
 from helpers.contextmanager import raise_keyboard_interrupt
 
@@ -31,24 +27,6 @@ def test_command_line_interface(options: List[str], expected: str) -> None:
     result = runner.invoke(main, options)
     assert result.exit_code == 0
     assert expected in result.output
-
-
-@pytest.mark.parametrize(
-    "address,raises,expected",
-    [
-        ("127.0.0.1", does_not_raise(), IPv4Address("127.0.0.1")),
-        ("::1", does_not_raise(), IPv6Address("::1")),
-        ("wrong address", pytest.raises(BadParameter), None),
-    ],
-)
-def test_ip_address_param_type(
-    address: str, raises: ContextManager, expected: Optional[Union[IPv4Address, IPv6Address]]
-) -> None:
-    """Test ip address param type."""
-    ptype = IpAddress()
-    with raises:
-        ip = ptype.convert(address, None, None)
-        assert ip == expected
 
 
 @pytest.mark.slow
