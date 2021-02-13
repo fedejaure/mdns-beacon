@@ -1,4 +1,4 @@
-"""Console script for mdns-beacon."""
+"""Main script for mdns-beacon."""
 from ipaddress import IPv4Address, IPv6Address
 from typing import Dict, Iterable, Tuple, Union
 
