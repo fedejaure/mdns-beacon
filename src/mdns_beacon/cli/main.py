@@ -81,6 +81,18 @@ def main() -> None:
     multiple=True,
     default=[],
 )
+@click.option(
+    "--delay-startup",
+    "delay_startup",
+    default=0,
+    type=click.IntRange(0, 300),
+    help=(
+        "In certain configurations, you may want to wait a given amount of time before "
+        "trying to start the mDNS beacon. This is typically found when network interfaces "
+        "appear only late during system startup and the interface startup priorities are "
+        "configured incorrectly. This setting takes any integer value between 0 and 300 seconds."
+    ),
+)
 def blink(
     name: str,
     aliases: Iterable[str],
@@ -92,6 +104,7 @@ def blink(
     priority: int,
     txt: bytes,
     properties: Dict[str, bytes],
+    delay_startup: int,
 ) -> None:
     """Announce aliases on the local network."""
     with Live(console=console, transient=True, auto_refresh=True) as live:
@@ -105,6 +118,7 @@ def blink(
             weight=weight,
             priority=priority,
             properties=properties or txt,
+            delay_startup=delay_startup,
         )
         try:
             beacon.run_forever()
