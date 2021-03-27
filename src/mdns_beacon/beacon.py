@@ -1,5 +1,6 @@
 """Beacon module."""
 import logging
+import time
 from ipaddress import IPv4Address, IPv6Address, ip_address
 from typing import Any, Dict, List, Optional, Union
 
@@ -27,6 +28,8 @@ class Beacon(BaseBeacon):
         weight: Weight of the service.
         priority: Priority of the service.
         properties: Dict of properties (or a bytes object with the content of the `text` field).
+        delay_startup: Amount of time to wait before trying to start
+            the zeroconf service (in seconds).
         *args: Variable length argument list.
         **kwargs: Arbitrary keyword arguments.
     """
@@ -45,7 +48,8 @@ class Beacon(BaseBeacon):
         ttl: int = 60,
         weight: int = 0,
         priority: int = 0,
-        properties: Union[bytes, Dict[str, Any]] = None,
+        properties: Optional[Union[bytes, Dict[str, Any]]] = None,
+        delay_startup: int = 0,
         *args: Any,
         **kwargs: Any,
     ) -> None:
@@ -62,6 +66,8 @@ class Beacon(BaseBeacon):
             priority: Priority of the service.
             properties: Dict of properties (or a bytes object with the
                 content of the `text` field) of the service.
+            delay_startup: Amount of time to wait before trying to start
+                the zeroconf service (in seconds).
             *args: Variable length argument list.
             **kwargs: Arbitrary keyword arguments.
         """
@@ -75,6 +81,7 @@ class Beacon(BaseBeacon):
         self.weight = weight
         self.priority = priority
         self.properties = properties or b""
+        self.delay_startup = delay_startup
 
     def _build_service_host(self, name: str) -> str:
         """Build service host for a given name.
@@ -137,8 +144,13 @@ class Beacon(BaseBeacon):
             self.zeroconf.unregister_service(service)
         super().stop()
 
+    def _wait(self) -> None:
+        """Wait before trying to start the zeroconf service."""
+        time.sleep(self.delay_startup)
+
     def _execute(self) -> None:
         """Register aliases on the local network."""
+        self._wait()
         logger.info("Registering %(services_len)s services", services_len=len(self.services))
         for service in self.services:
             logger.debug("Registering %(service_name)s", service_name=service.name)
