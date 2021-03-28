@@ -20,11 +20,11 @@ Supervisord example config.
 .. code-block:: TOML
 
     [program:mdns-beacon]
-    command=mdns-beacon blink example --alias sub1.example --address 127.0.0.1 --type http --protocol tcp --delay-startup 300
+    command=mdns-beacon blink example --alias sub1.example --address 127.0.0.1 --type http --protocol tcp --delay-startup 180
     numprocs=1
-    autostart=false
+    autostart=true
     autorestart=true
-    startsecs=60
+    startsecs=140
     startretries=3
     redirect_stderr=true
     stderr_logfile=/var/log/mdns-beacon-err.log
