@@ -1,6 +1,4 @@
-
 # mDNS Beacon
-
 
 [![PyPI - Version](https://img.shields.io/pypi/v/mdns-beacon.svg)](https://pypi.python.org/pypi/mdns-beacon)
 [![PyPI - License](https://img.shields.io/pypi/l/mdns-beacon.svg)](https://pypi.python.org/pypi/mdns-beacon)
@@ -24,7 +22,6 @@ Multicast DNS (mDNS) Beacon to announce multiple CNAME aliases across your local
 
 * ✅ Announce multiple aliases on the local network.
 * ✅ Listening utility to discover services during development.
-* ❌ Run as Unix daemon.
 * ❌ Configuration file.
 * ❌ Windows support.
 
