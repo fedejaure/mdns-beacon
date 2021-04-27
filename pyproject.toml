@@ -67,7 +67,7 @@ pytest-cov = "^2.11.1"
 watchdog = {version = "^2.0.2", extras = ["watchmedo"]}
 ipython = "^7.16"
 pytest-asyncio = "^0.15.1"
-pytest-mock = "^3.5.0"
+pytest-mock = "^3.6.0"
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
