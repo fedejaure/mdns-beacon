@@ -33,7 +33,7 @@ mdns-beacon = 'mdns_beacon.cli.main:main'
 [tool.poetry.dependencies]
 python = "<3.10,>=3.6.1"
 click = "^7.1.2"
-zeroconf = "^0.29.0"
+zeroconf = ">=0.29,<0.31"
 rich = "^10.1.0"
 python-slugify = ">=4.0.1,<6.0.0"
 typing-extensions = "^3.7.4"
