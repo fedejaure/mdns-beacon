@@ -858,11 +858,11 @@ dev = ["pre-commit", "tox", "pytest-asyncio"]
 
 [[package]]
 name = "python-slugify"
-version = "5.0.0"
+version = "5.0.2"
 description = "A Python Slugify application that handles Unicode"
 category = "main"
 optional = false
-python-versions = "!=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*"
+python-versions = ">=3.6"
 
 [package.dependencies]
 text-unidecode = ">=1.3"
@@ -1673,8 +1673,8 @@ pytest-mock = [
     {file = "pytest_mock-3.6.1-py3-none-any.whl", hash = "sha256:30c2f2cc9759e76eee674b81ea28c9f0b94f8f0445a1b87762cadf774f0df7e3"},
 ]
 python-slugify = [
-    {file = "python-slugify-5.0.0.tar.gz", hash = "sha256:744cd5d42b381687657f3b652d1d9b183c0870ec43de23be682b6d83d69c6962"},
-    {file = "python_slugify-5.0.0-py2.py3-none-any.whl", hash = "sha256:2a497206413bebbab1d9004c44443b71f65a402653446af7246904ad1c0927d3"},
+    {file = "python-slugify-5.0.2.tar.gz", hash = "sha256:f13383a0b9fcbe649a1892b9c8eb4f8eab1d6d84b84bb7a624317afa98159cab"},
+    {file = "python_slugify-5.0.2-py2.py3-none-any.whl", hash = "sha256:6d8c5df75cd4a7c3a2d21e257633de53f52ab0265cd2d1dc62a730e8194a7380"},
 ]
 pytz = [
     {file = "pytz-2021.1-py2.py3-none-any.whl", hash = "sha256:eb10ce3e7736052ed3623d49975ce333bcd712c7bb19a58b9e2089d4057d0798"},
