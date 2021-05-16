@@ -28,8 +28,8 @@ Multicast DNS (mDNS) Beacon to announce multiple CNAME aliases across your local
 
 * ✅ Announce multiple aliases on the local network.
 * ✅ Listening utility to discover services during development.
+* ✅ Windows support.
 * ❌ Configuration file.
-* ❌ Windows support.
 
 ## Quickstart
 
