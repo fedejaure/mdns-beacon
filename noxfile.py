@@ -77,7 +77,9 @@ def coverage(session: Session) -> None:
 def mypy(session: Session) -> None:
     """Type-check using mypy."""
     session.install(".")
-    install_with_constraints(session, "invoke", "mypy", "pytest-mock")
+    install_with_constraints(
+        session, "invoke", "mypy", "pytest-mock", "types-click", "types-python-slugify"
+    )
     session.run("inv", "mypy")
 
 
