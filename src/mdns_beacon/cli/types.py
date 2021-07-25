@@ -18,7 +18,7 @@ class IpAddress(click.ParamType):
 
     def convert(
         self, value: AnyStr, param: Optional[click.Parameter], ctx: Optional[click.Context]
-    ) -> Union[IPv4Address, IPv6Address]:
+    ) -> Optional[Union[IPv4Address, IPv6Address]]:
         """Parse value into IPv4Address or IPv6Address."""
         try:
             return ip_address(value)
