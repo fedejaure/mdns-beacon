@@ -1,15 +1,19 @@
 # mDNS Beacon
 
+<div align="center">
+
 [![PyPI - Version](https://img.shields.io/pypi/v/mdns-beacon.svg)](https://pypi.python.org/pypi/mdns-beacon)
-[![PyPI - License](https://img.shields.io/pypi/l/mdns-beacon.svg)](https://pypi.python.org/pypi/mdns-beacon)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mdns-beacon.svg)](https://pypi.python.org/pypi/mdns-beacon)
 [![Tests](https://github.com/fedejaure/mdns-beacon/workflows/tests/badge.svg)](https://github.com/fedejaure/mdns-beacon/actions?workflow=tests)
 [![Codecov](https://codecov.io/gh/fedejaure/mdns-beacon/branch/main/graph/badge.svg)](https://codecov.io/gh/fedejaure/mdns-beacon)
 [![Read the Docs](https://readthedocs.org/projects/mdns-beacon/badge/)](https://mdns-beacon.readthedocs.io/)
+[![PyPI - License](https://img.shields.io/pypi/l/mdns-beacon.svg)](https://pypi.python.org/pypi/mdns-beacon)
+
 [![Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](CODE_OF_CONDUCT.md)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](https://www.contributor-covenant.org/version/2/0/code_of_conduct/)
 
+</div>
 
 Multicast DNS (mDNS) Beacon to announce multiple CNAME aliases across your local network. Under development. Use by your own risk❗
 
