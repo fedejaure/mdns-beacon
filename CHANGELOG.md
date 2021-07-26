@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.1] - 2021-07-26
+### Changed
+- Update dependencies.
+
 ## [0.4.0] - 2021-03-28
 ### Added
 - `delay-startup` option to the `blink` command.
@@ -27,7 +31,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - First release on PyPI.
 
-[Unreleased]: https://github.com/fedejaure/mdns-beacon/compare/v0.4.0...develop
+[Unreleased]: https://github.com/fedejaure/mdns-beacon/compare/v0.4.1...develop
+[0.4.1]: https://github.com/fedejaure/mdns-beacon/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/fedejaure/mdns-beacon/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/fedejaure/mdns-beacon/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/fedejaure/mdns-beacon/compare/v0.1.0...v0.2.0
