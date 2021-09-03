@@ -69,7 +69,7 @@ ipython = "^7.16"
 pytest-asyncio = "^0.15.1"
 pytest-mock = "^3.6.1"
 types-click = "^7.1.5"
-types-python-slugify = "^0.1.1"
+types-python-slugify = "^0.1.2"
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
