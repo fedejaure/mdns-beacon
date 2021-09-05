@@ -1,0 +1,9 @@
+path_classifiers:
+  test:
+    - tests
+  docs:
+    - docs
+extraction:
+  python:
+    python_setup:
+      version: "3"
