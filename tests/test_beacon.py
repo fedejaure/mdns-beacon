@@ -55,7 +55,7 @@ def test_beacon(
     }  # TODO: Fix me
 
     beacon = Beacon(**beacon_params)
-    with raise_keyboard_interrupt(timeout=2):
+    with raise_keyboard_interrupt(timeout=4):
         beacon.run_forever()
 
     assert expected_services == {s.server for s in beacon.services}
