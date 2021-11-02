@@ -69,7 +69,7 @@ watchdog = {version = "^2.1.5", extras = ["watchmedo"]}
 ipython = "^7.16"
 pytest-asyncio = "^0.16.0"
 pytest-mock = "^3.6.1"
-types-click = "^7.1.5"
+types-click = "^7.1.7"
 types-python-slugify = "^5.0.2"
 
 [tool.coverage.paths]
