@@ -1179,7 +1179,7 @@ python-versions = "*"
 
 [[package]]
 name = "types-click"
-version = "7.1.7"
+version = "7.1.8"
 description = "Typing stubs for click"
 category = "dev"
 optional = false
@@ -1301,7 +1301,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "<3.11,>=3.6.2"
-content-hash = "5788eed0cd8994032b2630f5d384d35d67d26ee9348ae58195c0e98d57c6bcf7"
+content-hash = "d824f5b0dcd7627c09fe8aa321aaa81b6f63a062f4c406245fc1d8ab8cb8de18"
 
 [metadata.files]
 alabaster = [
@@ -1895,8 +1895,8 @@ typed-ast = [
     {file = "typed_ast-1.4.3.tar.gz", hash = "sha256:fb1bbeac803adea29cedd70781399c99138358c26d05fcbd23c13016b7f5ec65"},
 ]
 types-click = [
-    {file = "types-click-7.1.7.tar.gz", hash = "sha256:fff7ea52619581401a90cb9247e1a7e95c29084cfdbc26b7a49ed94c40fcd3d8"},
-    {file = "types_click-7.1.7-py3-none-any.whl", hash = "sha256:64dd3dc1fe5ed7e105b7a0479a6aebdd3c132c474c54f42a744af1bfba1989fd"},
+    {file = "types-click-7.1.8.tar.gz", hash = "sha256:b6604968be6401dc516311ca50708a0a28baa7a0cb840efd7412f0dbbff4e092"},
+    {file = "types_click-7.1.8-py3-none-any.whl", hash = "sha256:8cb030a669e2e927461be9827375f83c16b8178c365852c060a34e24871e7e81"},
 ]
 types-python-slugify = [
     {file = "types-python-slugify-5.0.2.tar.gz", hash = "sha256:7ddaa72cd33f0fa9c24caa07cd61260189ab8882ee74958eec656935e203d25d"},
