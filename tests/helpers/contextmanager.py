@@ -17,9 +17,7 @@ def ctrl_c_event_handler(signum: int, frame: FrameType) -> None:
 def get_break_signal() -> Union[int, signal.Signals]:
     """Get break signal by platform."""
     if sys.platform == "win32":
-        sig = signal.CTRL_C_EVENT
-        signal.signal(sig, ctrl_c_event_handler)
-        return sig
+        return signal.CTRL_C_EVENT
     return signal.SIGINT
 
 
