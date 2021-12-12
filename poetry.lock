@@ -961,7 +961,7 @@ use_chardet_on_py3 = ["chardet (>=3.0.2,<5)"]
 
 [[package]]
 name = "rich"
-version = "10.12.0"
+version = "10.16.0"
 description = "Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal"
 category = "main"
 optional = false
@@ -972,7 +972,7 @@ colorama = ">=0.4.0,<0.5.0"
 commonmark = ">=0.9.0,<0.10.0"
 dataclasses = {version = ">=0.7,<0.9", markers = "python_version < \"3.7\""}
 pygments = ">=2.6.0,<3.0.0"
-typing-extensions = {version = ">=3.7.4,<4.0.0", markers = "python_version < \"3.8\""}
+typing-extensions = {version = ">=3.7.4,<5.0", markers = "python_version < \"3.8\""}
 
 [package.extras]
 jupyter = ["ipywidgets (>=7.5.1,<8.0.0)"]
@@ -1301,7 +1301,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "<3.11,>=3.6.2"
-content-hash = "d824f5b0dcd7627c09fe8aa321aaa81b6f63a062f4c406245fc1d8ab8cb8de18"
+content-hash = "a079e0d8231309be7bacd33532aba4fe661ee0595c0cf3cc3758b56c60814427"
 
 [metadata.files]
 alabaster = [
@@ -1795,8 +1795,8 @@ requests = [
     {file = "requests-2.26.0.tar.gz", hash = "sha256:b8aa58f8cf793ffd8782d3d8cb19e66ef36f7aba4353eec859e74678b01b07a7"},
 ]
 rich = [
-    {file = "rich-10.12.0-py3-none-any.whl", hash = "sha256:c30d6808d1cd3defd56a7bd2d587d13e53b5f55de6cf587f035bcbb56bc3f37b"},
-    {file = "rich-10.12.0.tar.gz", hash = "sha256:83fb3eff778beec3c55201455c17cccde1ccdf66d5b4dade8ef28f56b50c4bd4"},
+    {file = "rich-10.16.0-py3-none-any.whl", hash = "sha256:24de23bd86b539d02c1570d93ace9bc8a07f2d5db87f97640226e9f6f8ff0253"},
+    {file = "rich-10.16.0.tar.gz", hash = "sha256:06a1355131feda5eba4511dd749e9187ac0fb42209e189845d81e94505fc268e"},
 ]
 safety = [
     {file = "safety-1.10.3-py2.py3-none-any.whl", hash = "sha256:5f802ad5df5614f9622d8d71fedec2757099705c2356f862847c58c6dfe13e84"},
