@@ -15,7 +15,6 @@ classifiers=[
     "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.6",
     "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
@@ -32,7 +31,7 @@ mdns-beacon = 'mdns_beacon.cli.main:main'
 
 
 [tool.poetry.dependencies]
-python = "<3.11,>=3.6.2"
+python = "<3.11,>=3.7"
 click = "^8.0.3"
 zeroconf = "^0.37.0"
 rich = "^10.16.0"
