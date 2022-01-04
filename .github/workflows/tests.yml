@@ -63,7 +63,7 @@ jobs:
         run: nox --force-color -s safety
 
       - name: Upload coverage data
-        uses: actions/upload-artifact@v2.2.4
+        uses: actions/upload-artifact@v2.3.1
         with:
           name: coverage-data
           path: ".coverage.*"
