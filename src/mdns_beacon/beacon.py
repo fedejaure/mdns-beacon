@@ -138,9 +138,11 @@ class Beacon(BaseBeacon):
 
         Unregister all the announced services.
         """
-        logger.info("Unregistering %(services_len)s services", services_len=len(self.services))
+        logger.info(
+            "Unregistering %(services_len)s services", {"services_len": len(self.services)}
+        )
         for service in self.services:
-            logger.debug("Unregistering %(service_name)s", service_name=service.name)
+            logger.debug("Unregistering %(service_name)s", {"service_name": service.name})
             self.zeroconf.unregister_service(service)
         super().stop()
 
@@ -151,7 +153,7 @@ class Beacon(BaseBeacon):
     def _execute(self) -> None:
         """Register aliases on the local network."""
         self._wait()
-        logger.info("Registering %(services_len)s services", services_len=len(self.services))
+        logger.info("Registering %(services_len)s services", {"services_len": len(self.services)})
         for service in self.services:
-            logger.debug("Registering %(service_name)s", service_name=service.name)
+            logger.debug("Registering %(service_name)s", {"service_name": service.name})
             self.zeroconf.register_service(service)
