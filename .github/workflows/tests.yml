@@ -13,12 +13,12 @@ jobs:
     name: Linting
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@v2.4.0
       
-      - name: Set up Python 3.6
-        uses: actions/setup-python@v2.2.2
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v2.3.1
         with:
-          python-version: 3.6
+          python-version: 3.7
       
       - name: Linting
         run: |
@@ -32,13 +32,13 @@ jobs:
     strategy:
       matrix:
         os: [Ubuntu, MacOS]
-        python-version: ['3.6', '3.7', '3.8', '3.9', '3.10']
+        python-version: ['3.7', '3.8', '3.9', '3.10']
       fail-fast: true
     steps:
-      - uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@v2.4.0
       
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2.2.2
+        uses: actions/setup-python@v2.3.1
         with:
           python-version: ${{ matrix.python-version }}
       
@@ -63,7 +63,7 @@ jobs:
         run: nox --force-color -s safety
 
       - name: Upload coverage data
-        uses: actions/upload-artifact@v2.2.4
+        uses: actions/upload-artifact@v2.3.1
         with:
           name: coverage-data
           path: ".coverage.*"
@@ -72,12 +72,12 @@ jobs:
     needs: tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@v2.4.0
       
-      - name: Set up Python 3.6
-        uses: actions/setup-python@v2.2.2
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v2.3.1
         with:
-          python-version: 3.6
+          python-version: 3.7
       
       - name: Install system deps
         shell: bash
@@ -87,7 +87,7 @@ jobs:
           poetry config virtualenvs.in-project true
 
       - name: Download coverage data
-        uses: actions/download-artifact@v2.0.10
+        uses: actions/download-artifact@v2.1.0
         with:
           name: coverage-data
 
