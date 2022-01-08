@@ -33,10 +33,10 @@ mdns-beacon = 'mdns_beacon.cli.main:main'
 [tool.poetry.dependencies]
 python = "<3.11,>=3.7"
 click = "^8.0.3"
-zeroconf = "^0.37.0"
-rich = "^10.16.0"
+zeroconf = "^0.38.1"
+rich = "^10.16.2"
 python-slugify = "^5.0.2"
-typing-extensions = "^3.10.0"
+typing-extensions = "^4.0.1"
 click-option-group = "^0.5.3"
 
 
@@ -58,7 +58,7 @@ isort = "^5.10.1"
 black = "^21.12b0"
 safety = "^1.10.3"
 mypy = "^0.910"
-sphinx = "^4.3.1"
+sphinx = "^4.3.2"
 recommonmark = "^0.7.1"
 bump2version = "^1.0.1"
 pytest = "^6.2.5"
