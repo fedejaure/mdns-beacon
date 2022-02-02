@@ -1148,7 +1148,7 @@ python-versions = "*"
 
 [[package]]
 name = "types-python-slugify"
-version = "5.0.2"
+version = "5.0.3"
 description = "Typing stubs for python-slugify"
 category = "dev"
 optional = false
@@ -1260,7 +1260,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "<3.11,>=3.7"
-content-hash = "d1af15724522eb22caa39b8723f2516dd99c0f8c49e479d5fdde99e5a5b2aeb1"
+content-hash = "a5aeff45489d556259caba2af7bff1f478521d8edfea11d24ffb0691b8ab1d11"
 
 [metadata.files]
 alabaster = [
@@ -1862,8 +1862,8 @@ types-click = [
     {file = "types_click-7.1.8-py3-none-any.whl", hash = "sha256:8cb030a669e2e927461be9827375f83c16b8178c365852c060a34e24871e7e81"},
 ]
 types-python-slugify = [
-    {file = "types-python-slugify-5.0.2.tar.gz", hash = "sha256:7ddaa72cd33f0fa9c24caa07cd61260189ab8882ee74958eec656935e203d25d"},
-    {file = "types_python_slugify-5.0.2-py3-none-any.whl", hash = "sha256:3b30b6fc7a4611233feb1837554a8534006a5c8a81bed7d8f0d5dfcd600285bd"},
+    {file = "types-python-slugify-5.0.3.tar.gz", hash = "sha256:76169f4a6d40896fea76fb45a25c50ac7ba2ca03eee759ecac322a05fe4dd21c"},
+    {file = "types_python_slugify-5.0.3-py3-none-any.whl", hash = "sha256:a5761d3c55e949f8ace0694eb5be81210087084bb78df495de14ee5eaad6ac54"},
 ]
 typing-extensions = [
     {file = "typing_extensions-4.0.1-py3-none-any.whl", hash = "sha256:7f001e5ac290a0c0401508864c7ec868be4e701886d5b573a9528ed3973d9d3b"},
