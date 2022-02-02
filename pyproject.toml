@@ -33,8 +33,8 @@ mdns-beacon = 'mdns_beacon.cli.main:main'
 [tool.poetry.dependencies]
 python = "<3.11,>=3.7"
 click = "^8.0.3"
-zeroconf = "^0.38.1"
-rich = "^10.16.2"
+zeroconf = "^0.38.3"
+rich = "^11.1.0"
 python-slugify = "^5.0.2"
 typing-extensions = "^4.0.1"
 click-option-group = "^0.5.3"
@@ -63,7 +63,7 @@ recommonmark = "^0.7.1"
 bump2version = "^1.0.1"
 pytest = "^6.2.5"
 xdoctest = "^0.15.10"
-coverage = {version = "^6.3", extras = ["toml"]}
+coverage = {version = "^6.3.1", extras = ["toml"]}
 pytest-cov = "^3.0.0"
 watchdog = {version = "^2.1.5", extras = ["watchmedo"]}
 ipython = "^7.31"
@@ -125,7 +125,7 @@ known_local_folder = ["helpers"]
 
 [tool.black]
 line-length = 99
-target-version = ["py36"]
+target-version = ["py37"]
 
 [tool.pytest.ini_options]
 filterwarnings = [
