@@ -125,7 +125,7 @@ known_local_folder = ["helpers"]
 
 [tool.black]
 line-length = 99
-target-version = ["py36"]
+target-version = ["py37"]
 
 [tool.pytest.ini_options]
 filterwarnings = [
