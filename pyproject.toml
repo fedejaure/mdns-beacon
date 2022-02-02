@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mdns-beacon"
-version = "0.6.0"
+version = "0.6.1"
 description = "Multicast DNS (mDNS) Beacon to announce multiple CNAME aliases across your local network."
 authors = ["Federico Jaureguialzo <fedejaure@gmail.com>"]
 
@@ -33,44 +33,44 @@ mdns-beacon = 'mdns_beacon.cli.main:main'
 [tool.poetry.dependencies]
 python = "<3.11,>=3.7"
 click = "^8.0.3"
-zeroconf = "^0.38.1"
-rich = "^10.16.2"
+zeroconf = "^0.38.3"
+rich = "^11.1.0"
 python-slugify = "^5.0.2"
 typing-extensions = "^4.0.1"
 click-option-group = "^0.5.3"
 
 
 [tool.poetry.dev-dependencies]
-pre-commit = "^2.16.0"
+pre-commit = "^2.17.0"
 invoke = "^1.6.0"
 flake8 = "^3.9.2"
 flakehell = "^0.9.0"
 flake8-builtins = "^1.5.3"
 flake8-blind-except = "^0.2.0"
 flake8-logging-format = "^0.6.0"
-flake8-bugbear = "^21.11.29"
+flake8-bugbear = "^22.1.11"
 flake8-annotations = "^2.7.0"
 flake8-docstrings = "^1.6.0"
 flake8-bandit = "^2.1.2"
 flake8-broken-line = "^0.4.0"
 darglint = "^1.8.1"
 isort = "^5.10.1"
-black = "^21.12b0"
+black = "^22.1"
 safety = "^1.10.3"
 mypy = "^0.931"
-sphinx = "^4.3.2"
+sphinx = "^4.4.0"
 recommonmark = "^0.7.1"
 bump2version = "^1.0.1"
 pytest = "^6.2.5"
 xdoctest = "^0.15.10"
-coverage = {version = "^6.2", extras = ["toml"]}
+coverage = {version = "^6.3.1", extras = ["toml"]}
 pytest-cov = "^3.0.0"
 watchdog = {version = "^2.1.5", extras = ["watchmedo"]}
-ipython = "^7.16"
-pytest-asyncio = "^0.16.0"
-pytest-mock = "^3.6.1"
+ipython = "^7.31"
+pytest-asyncio = "^0.17.2"
+pytest-mock = "^3.7.0"
 types-click = "^7.1.8"
-types-python-slugify = "^5.0.2"
+types-python-slugify = "^5.0.3"
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
@@ -125,7 +125,7 @@ known_local_folder = ["helpers"]
 
 [tool.black]
 line-length = 99
-target-version = ["py36"]
+target-version = ["py37"]
 
 [tool.pytest.ini_options]
 filterwarnings = [
