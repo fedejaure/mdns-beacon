@@ -1268,11 +1268,11 @@ tests = ["cmake", "codecov", "ninja", "pybind11", "pytest-cov", "pytest-cov", "p
 
 [[package]]
 name = "zeroconf"
-version = "0.38.3"
+version = "0.38.7"
 description = "Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)"
 category = "main"
 optional = false
-python-versions = "*"
+python-versions = ">=3.7"
 
 [package.dependencies]
 ifaddr = ">=0.1.7"
