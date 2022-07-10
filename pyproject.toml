@@ -65,7 +65,7 @@ pytest = "^7.1.2"
 xdoctest = "^1.0.0"
 coverage = {version = "^6.4.1", extras = ["toml"]}
 pytest-cov = "^3.0.0"
-watchdog = {version = "^2.1.7", extras = ["watchmedo"]}
+watchdog = {version = "^2.1.9", extras = ["watchmedo"]}
 ipython = "^7.33"
 pytest-asyncio = "^0.18.3"
 pytest-mock = "^3.8.2"

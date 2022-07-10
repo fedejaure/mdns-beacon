@@ -1228,7 +1228,7 @@ testing = ["coverage (>=4)", "coverage-enable-subprocess (>=1)", "flaky (>=3)", 
 
 [[package]]
 name = "watchdog"
-version = "2.1.7"
+version = "2.1.9"
 description = "Filesystem events monitoring"
 category = "dev"
 optional = false
@@ -1292,7 +1292,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "<3.11,>=3.7"
-content-hash = "6bbdea1bc61877b3e6d68b9aa28141ea5de01eeba6cb8a8cf52d650b6dda4045"
+content-hash = "6b4b225f1aed6350fedf065624cf049a46ce70455ce6336f34ce40da9647d3b5"
 
 [metadata.files]
 alabaster = []
