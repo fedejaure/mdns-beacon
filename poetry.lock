@@ -493,7 +493,7 @@ python-versions = "*"
 
 [[package]]
 name = "ipython"
-version = "7.33.0"
+version = "7.34.0"
 description = "IPython: Productive Interactive Computing"
 category = "dev"
 optional = false
@@ -1292,7 +1292,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "<3.11,>=3.7"
-content-hash = "6b4b225f1aed6350fedf065624cf049a46ce70455ce6336f34ce40da9647d3b5"
+content-hash = "f97a7c860db703a84fbf1bf520eaba2e4076f210336ba438ba0fe71fc6a58c9a"
 
 [metadata.files]
 alabaster = []
