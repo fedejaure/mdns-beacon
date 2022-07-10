@@ -1180,7 +1180,7 @@ python-versions = "*"
 
 [[package]]
 name = "types-python-slugify"
-version = "5.0.4"
+version = "6.1.0"
 description = "Typing stubs for python-slugify"
 category = "dev"
 optional = false
@@ -1292,7 +1292,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "<3.11,>=3.7"
-content-hash = "988bc4d72dd1186204c9d1a5b9573bce8c73d8d836da6c51f89cbb655637fc82"
+content-hash = "6bbdea1bc61877b3e6d68b9aa28141ea5de01eeba6cb8a8cf52d650b6dda4045"
 
 [metadata.files]
 alabaster = []
