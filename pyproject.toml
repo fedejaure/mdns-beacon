@@ -35,7 +35,7 @@ python = "<3.11,>=3.7"
 click = "^8.0.3"
 zeroconf = "^0.38.3"
 rich = "^11.1.0"
-python-slugify = "^5.0.2"
+python-slugify = ">=5.0.2,<7.0.0"
 typing-extensions = "^4.0.1"
 click-option-group = "^0.5.3"
 
