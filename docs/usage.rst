@@ -17,7 +17,7 @@ Supervisord
 
 Supervisord example config.
 
-.. code-block:: TOML
+.. code-block:: toml
 
     [program:mdns-beacon]
     command=mdns-beacon blink example --alias sub1.example --address 127.0.0.1 --type http --protocol tcp --delay-startup 180
