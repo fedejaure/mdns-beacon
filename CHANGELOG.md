@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.0] - 2022-07-24
+### Changed
+- Update dependencies.
+
+### Removed
+- Python 3.7 support.
+
 ## [0.6.1] - 2022-02-02
 ### Changed
 - Update dependencies.
@@ -53,7 +60,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - First release on PyPI.
 
-[Unreleased]: https://github.com/fedejaure/mdns-beacon/compare/v0.6.1...develop
+[Unreleased]: https://github.com/fedejaure/mdns-beacon/compare/v0.7.0...develop
+[0.7.0]: https://github.com/fedejaure/mdns-beacon/compare/v0.6.1...v0.7.0
 [0.6.1]: https://github.com/fedejaure/mdns-beacon/compare/v0.6.0...v0.6.1
 [0.6.0]: https://github.com/fedejaure/mdns-beacon/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/fedejaure/mdns-beacon/compare/v0.4.2...v0.5.0
