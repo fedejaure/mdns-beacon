@@ -110,7 +110,7 @@ mccabe = ["+*"]
 flake8-annotations = ["+*", "-ANN1??", "-ANN401"]
 "flake8-*" = ["+*"]
 darglint = ["+*"]
-pylint = ["+*"]
+pylint = ["-*"]
 
 [tool.flakeheaven.exceptions."tests/"]
 flake8-bandit = ["-S101"]
