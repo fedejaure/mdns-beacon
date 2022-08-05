@@ -105,9 +105,10 @@ extended_default_ignore = []
 
 [tool.flakeheaven.plugins]
 pyflakes = ["+*"]
-pycodestyle = ["+*", "-D212"]
+pycodestyle = ["+*"]
 mccabe = ["+*"]
 flake8-annotations = ["+*", "-ANN1??", "-ANN401"]
+flake8-docstrings = ["+*", "-D212"]
 "flake8-*" = ["+*"]
 pylint = ["-C????", "-E????", "+F????", "+I????", "-R????", "-W????"]
 
