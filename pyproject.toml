@@ -68,7 +68,7 @@ pytest-cov = "^3.0.0"
 watchdog = {version = "^2.1.9", extras = ["watchmedo"]}
 ipython = "^8.4"
 pytest-asyncio = "^0.19.0"
-pytest-mock = "^3.8.2"
+pytest-mock = "^3.9.0"
 types-click = "^7.1.8"
 types-python-slugify = "^6.1.0"
 
