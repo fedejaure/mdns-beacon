@@ -121,7 +121,7 @@ include_trailing_comma = true
 force_grid_wrap = 0
 use_parentheses = true
 line_length = 99
-known_third_party = ["invoke", "nox"]
+known_third_party = ["invoke", "nox", "nox_poetry"]
 known_local_folder = ["helpers"]
 
 [tool.black]
