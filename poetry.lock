@@ -43,6 +43,14 @@ six = "*"
 test = ["astroid", "pytest"]
 
 [[package]]
+name = "async-timeout"
+version = "4.0.2"
+description = "Timeout context manager for asyncio programs"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
 name = "attrs"
 version = "21.4.0"
 description = "Classes Without Boilerplate"
@@ -1387,13 +1395,14 @@ tests-strict = ["cmake (==3.21.2)", "codecov (==2.0.15)", "ninja (==1.10.2)", "p
 
 [[package]]
 name = "zeroconf"
-version = "0.38.7"
+version = "0.39.1"
 description = "Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)"
 category = "main"
 optional = false
 python-versions = ">=3.7"
 
 [package.dependencies]
+async-timeout = ">=4.0.1"
 ifaddr = ">=0.1.7"
 
 [[package]]
@@ -1411,7 +1420,7 @@ testing = ["func-timeout", "jaraco.itertools", "pytest (>=6)", "pytest-black (>=
 [metadata]
 lock-version = "1.1"
 python-versions = "<3.11,>=3.8"
-content-hash = "04bded2b81f0457158ac0ee2dbb3aca19958227661d5b6555ecf8ed921f46a07"
+content-hash = "7e540309173d9bcc46edb74423f7575c8a07cb5f85a9836cec4a62a80445714c"
 
 [metadata.files]
 alabaster = [
@@ -1429,6 +1438,10 @@ astroid = [
 asttokens = [
     {file = "asttokens-2.0.5-py2.py3-none-any.whl", hash = "sha256:0844691e88552595a6f4a4281a9f7f79b8dd45ca4ccea82e5e05b4bbdb76705c"},
     {file = "asttokens-2.0.5.tar.gz", hash = "sha256:9a54c114f02c7a9480d56550932546a3f1fe71d8a02f1bc7ccd0ee3ee35cf4d5"},
+]
+async-timeout = [
+    {file = "async-timeout-4.0.2.tar.gz", hash = "sha256:2163e1640ddb52b7a8c80d0a67a08587e5d245cc9c553a74a847056bc2976b15"},
+    {file = "async_timeout-4.0.2-py3-none-any.whl", hash = "sha256:8ca1e4fcf50d07413d66d1a5e416e42cfdf5851c981d679a09851a6853383b3c"},
 ]
 attrs = [
     {file = "attrs-21.4.0-py2.py3-none-any.whl", hash = "sha256:2d27e3784d7a565d36ab851fe94887c5eccd6a463168875832a1be79c82828b4"},
@@ -2194,8 +2207,8 @@ xdoctest = [
     {file = "xdoctest-1.1.0.tar.gz", hash = "sha256:0fd4fad7932f0a2f082dfdfb857dd6ca41603757586c39b1e5b4d333fc389f8a"},
 ]
 zeroconf = [
-    {file = "zeroconf-0.38.7-py3-none-any.whl", hash = "sha256:925168c84dbaa6f3c0d990d26c34417020276748960f462b113cfbd9bb449866"},
-    {file = "zeroconf-0.38.7.tar.gz", hash = "sha256:eaee2293e5f4e6d249f6155f9d3cca1668cb22b2545995ea72c6a03b4b7706d4"},
+    {file = "zeroconf-0.39.1-py3-none-any.whl", hash = "sha256:430806d36002b72a45176e2e2d29856195e9286ec620dbdecd124431812a87ef"},
+    {file = "zeroconf-0.39.1.tar.gz", hash = "sha256:b83cff68a0c8dcd2705b5e792796239accba2bfddb09bc8d05badc642f64e7f6"},
 ]
 zipp = [
     {file = "zipp-3.8.1-py3-none-any.whl", hash = "sha256:47c40d7fe183a6f21403a199b3e4192cca5774656965b0a4988ad2f8feb5f009"},
