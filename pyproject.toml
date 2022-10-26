@@ -36,7 +36,7 @@ zeroconf = "^0.38.7"
 rich = "^12.6.0"
 python-slugify = "^6.1.2"
 typing-extensions = "^4.4.0"
-click-option-group = "^0.5.3"
+click-option-group = "^0.5.5"
 
 
 [tool.poetry.dev-dependencies]
