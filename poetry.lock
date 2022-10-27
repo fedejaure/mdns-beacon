@@ -429,7 +429,7 @@ flake8 = "*"
 
 [[package]]
 name = "flakeheaven"
-version = "3.0.0"
+version = "3.2.0"
 description = "FlakeHeaven is a [Flake8](https://gitlab.com/pycqa/flake8) wrapper to make it cool."
 category = "dev"
 optional = false
@@ -1420,7 +1420,7 @@ testing = ["func-timeout", "jaraco.itertools", "pytest (>=6)", "pytest-black (>=
 [metadata]
 lock-version = "1.1"
 python-versions = "<3.11,>=3.8"
-content-hash = "28533d152fdbd88ee4dca1bd9d5b757144d2b1e7483d987cecdf823dabd47fb2"
+content-hash = "971b5dd21e203f2cb7bfaf508f196a49f593e7f591ca22b0e70d6355234e66fe"
 
 [metadata.files]
 alabaster = [
@@ -1641,8 +1641,8 @@ flake8-polyfill = [
     {file = "flake8_polyfill-1.0.2-py2.py3-none-any.whl", hash = "sha256:12be6a34ee3ab795b19ca73505e7b55826d5f6ad7230d31b18e106400169b9e9"},
 ]
 flakeheaven = [
-    {file = "flakeheaven-3.0.0-py3-none-any.whl", hash = "sha256:c3e8acbbb3ca29402132cc160857c4f9ed6051a37f9d4d4f424ea6d14616ea33"},
-    {file = "flakeheaven-3.0.0.tar.gz", hash = "sha256:81771740b2de3151d9cf6a38b63bc0f30b1070a15ddd2acf1c1706271d9dc0dd"},
+    {file = "flakeheaven-3.2.0-py3-none-any.whl", hash = "sha256:ec5a508c3db64d73128b65cb2a5a2c0a2d9f2e4b435e9fa2bcc03bf0df86da79"},
+    {file = "flakeheaven-3.2.0.tar.gz", hash = "sha256:225333d7bf309079f19a2c5f02d427fc7558a0d0c065944de88041ca94f5525c"},
 ]
 gitdb = [
     {file = "gitdb-4.0.9-py3-none-any.whl", hash = "sha256:8033ad4e853066ba6ca92050b9df2f89301b8fc8bf7e9324d412a63f8bf1a8fd"},
