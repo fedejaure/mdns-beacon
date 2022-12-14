@@ -1,6 +1,6 @@
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.3.0
+    rev: v4.4.0
     hooks:
       - id: check-added-large-files
       - id: check-ast
@@ -19,7 +19,7 @@ repos:
     hooks:
       - id: black
 -   repo: https://github.com/flakeheaven/flakeheaven
-    rev: 3.2.0
+    rev: 3.2.1
     hooks:
       - id: flakeheaven
         additional_dependencies: [
