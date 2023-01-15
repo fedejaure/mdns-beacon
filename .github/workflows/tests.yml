@@ -45,7 +45,7 @@ jobs:
       - name: Install system deps
         shell: bash
         run: |
-          pip install nox
+          pip install nox-poetry
           pip install poetry
           poetry config virtualenvs.in-project true
 
@@ -82,7 +82,7 @@ jobs:
       - name: Install system deps
         shell: bash
         run: |
-          pip install nox
+          pip install nox-poetry
           pip install poetry
           poetry config virtualenvs.in-project true
 
@@ -97,6 +97,6 @@ jobs:
           nox --force-color --session=coverage -- --fmt xml
 
       - name: Upload coverage report
-        uses: codecov/codecov-action@v3.1.0
+        uses: codecov/codecov-action@v3.1.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
