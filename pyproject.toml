@@ -41,7 +41,7 @@ click-option-group = "^0.5.5"
 
 [tool.poetry.dev-dependencies]
 pre-commit = "^3.0.4"
-invoke = "^1.7.3"
+invoke = "^2.0.0"
 flake8 = "^4.0.1"
 flakeheaven = "^3.2.1"
 flake8-builtins = "^2.1.0"
