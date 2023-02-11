@@ -39,7 +39,7 @@ typing-extensions = "^4.4.0"
 click-option-group = "^0.5.5"
 
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 pre-commit = "^3.0.4"
 invoke = "^2.0.0"
 flake8 = "^4.0.1"
