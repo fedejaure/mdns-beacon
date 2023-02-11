@@ -33,5 +33,5 @@ repos:
           'flake8-bandit~=3.0.0',
           'flake8-broken-line~=0.6.0',
           'darglint~=1.8.1',
-          'pylint~=2.15.5',
+          'pylint~=2.16.1',
         ]
