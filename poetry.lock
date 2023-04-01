@@ -1872,14 +1872,14 @@ files = [
 
 [[package]]
 name = "types-python-slugify"
-version = "8.0.0.1"
+version = "8.0.0.2"
 description = "Typing stubs for python-slugify"
 category = "dev"
 optional = false
 python-versions = "*"
 files = [
-    {file = "types-python-slugify-8.0.0.1.tar.gz", hash = "sha256:f2177d2e65ecf2eca742d28fbf236a8d919a72e68272d1d748c3fe965e5ea3ab"},
-    {file = "types_python_slugify-8.0.0.1-py3-none-any.whl", hash = "sha256:1de288ce45c85627ef632c2b5098dedccfc7ebedb241d181ba69402f03704449"},
+    {file = "types-python-slugify-8.0.0.2.tar.gz", hash = "sha256:de237b01c69ad3a57ae36a0e8a6a0c65b47bac529483007c1cae2d424cb07cc8"},
+    {file = "types_python_slugify-8.0.0.2-py3-none-any.whl", hash = "sha256:9e81f49eac8c805f924695de559fb8dc123ccbd15adb47d40ceaec51c739f044"},
 ]
 
 [[package]]
