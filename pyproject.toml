@@ -49,7 +49,7 @@ safety = "^2.4.0b1"
 
 [tool.poetry.group.linters.dependencies]
 flake8 = ">=4.0.1,<5.0"
-flakeheaven = "^3.2.1"
+flakeheaven = "^3.3.0"
 flake8-builtins = "^2.1.0"
 flake8-blind-except = "^0.2.1"
 flake8-logging-format = "^0.9.0"
