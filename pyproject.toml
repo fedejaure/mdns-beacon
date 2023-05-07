@@ -62,7 +62,7 @@ darglint = "^1.8.1"
 pylint = "^2.17.1"
 
 [tool.poetry.group.test.dependencies]
-pytest = "^7.2.2"
+pytest = "^7.3.1"
 xdoctest = "^1.1.1"
 coverage = {version = "^7.2.2", extras = ["toml"]}
 pytest-cov = "^4.0.0"
