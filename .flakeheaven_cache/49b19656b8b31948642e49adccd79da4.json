@@ -1,0 +1,1 @@
+{"results": [["pyflakes", "F401", 2, 0, "'.beacon.Beacon' imported but unused", "from .beacon import Beacon  # noqa: F401\n"], ["pyflakes", "F401", 3, 0, "'.listener.BeaconListener' imported but unused", "from .listener import BeaconListener  # noqa: F401\n"]], "digest": "a4c6f71ac09370ac94b203b471a7a9c8"}
