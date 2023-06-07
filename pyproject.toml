@@ -37,7 +37,7 @@ click-option-group = "^0.5.5"
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^3.3.1"
-invoke = "^2.1.1"
+invoke = "^2.1.2"
 bump2version = "^1.0.1"
 
 [tool.poetry.group.formating.dependencies]
