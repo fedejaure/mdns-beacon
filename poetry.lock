@@ -264,13 +264,13 @@ files = [
 
 [[package]]
 name = "click"
-version = "8.1.3"
+version = "8.1.7"
 description = "Composable command line interface toolkit"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "click-8.1.3-py3-none-any.whl", hash = "sha256:bb4d8133cb15a609f44e8213d9b391b0809795062913b383c62be0ee95b1db48"},
-    {file = "click-8.1.3.tar.gz", hash = "sha256:7682dc8afb30297001674575ea00d1814d808d6a36af415a82bd481d37ba7b8e"},
+    {file = "click-8.1.7-py3-none-any.whl", hash = "sha256:ae74fb96c20a0277a1d615f1e4d73c8414f5a98db8b799a7931d1582f3390c28"},
+    {file = "click-8.1.7.tar.gz", hash = "sha256:ca9853ad459e787e2192211578cc907e7594e294c7ccc834310722b41b9ca6de"},
 ]
 
 [package.dependencies]
@@ -278,22 +278,22 @@ colorama = {version = "*", markers = "platform_system == \"Windows\""}
 
 [[package]]
 name = "click-option-group"
-version = "0.5.5"
+version = "0.5.6"
 description = "Option groups missing in Click"
 optional = false
 python-versions = ">=3.6,<4"
 files = [
-    {file = "click-option-group-0.5.5.tar.gz", hash = "sha256:78ee474f07a0ca0ef6c0317bb3ebe79387aafb0c4a1e03b1d8b2b0be1e42fc78"},
-    {file = "click_option_group-0.5.5-py3-none-any.whl", hash = "sha256:0f8ca79bc9b1d6fcaafdbe194b17ba1a2dde44ddf19087235c3efed2ad288143"},
+    {file = "click-option-group-0.5.6.tar.gz", hash = "sha256:97d06703873518cc5038509443742b25069a3c7562d1ea72ff08bfadde1ce777"},
+    {file = "click_option_group-0.5.6-py3-none-any.whl", hash = "sha256:38a26d963ee3ad93332ddf782f9259c5bdfe405e73408d943ef5e7d0c3767ec7"},
 ]
 
 [package.dependencies]
 Click = ">=7.0,<9"
 
 [package.extras]
-docs = ["Pallets-Sphinx-Themes", "m2r2", "sphinx (>=3.0,<6)"]
+docs = ["Pallets-Sphinx-Themes", "m2r2", "sphinx"]
 tests = ["pytest"]
-tests-cov = ["coverage (<6)", "coveralls", "pytest", "pytest-cov"]
+tests-cov = ["coverage", "coveralls", "pytest", "pytest-cov"]
 
 [[package]]
 name = "colorama"
@@ -2051,4 +2051,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = "<3.12,>=3.8"
-content-hash = "9e483308ea3324df6e07b39fc8e77898b92703f2f1281adac33c46d194f4ce8e"
+content-hash = "f4e8bf4e11c4438c69d33bce53f11ba21b9c138330c1c4243b9ba282d91351b6"
