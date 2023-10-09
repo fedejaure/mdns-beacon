@@ -70,7 +70,7 @@ pytest-asyncio = "^0.21.1"
 pytest-mock = "^3.11.1"
 
 [tool.poetry.group.docs.dependencies]
-sphinx = "^7.0.1"
+sphinx = "^7.1.2"
 recommonmark = "^0.7.1"
 watchdog = {version = "^3.0.0", extras = ["watchmedo"]}
 
