@@ -152,7 +152,10 @@ class ListenLayout(BaseLayout):
                     "priority": info.priority,
                     "text": info.text.decode("utf8"),
                     "properties": {
-                        k.decode("utf8"): v.decode("utf8") for k, v in info.properties.items()
+                        (k.decode("utf8") if isinstance(k, bytes) else k): (
+                            v.decode("utf8") if isinstance(v, bytes) else v
+                        )
+                        for k, v in info.properties.items()
                     },
                 }
         self.live.update(self.renderable)
