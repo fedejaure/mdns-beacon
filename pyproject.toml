@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mdns-beacon"
-version = "0.7.1"
+version = "0.8.0"
 description = "Multicast DNS (mDNS) Beacon to announce multiple CNAME aliases across your local network."
 authors = ["Federico Jaureguialzo <fedejaure@gmail.com>"]
 readme = "README.md"
