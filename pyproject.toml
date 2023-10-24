@@ -42,7 +42,7 @@ bump2version = "^1.0.1"
 
 [tool.poetry.group.formating.dependencies]
 isort = "^5.12.0"
-black = "^23.9.1"
+black = "^23.10.1"
 
 [tool.poetry.group.security.dependencies]
 safety = "^2.4.0b1"
