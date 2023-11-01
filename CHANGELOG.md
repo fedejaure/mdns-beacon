@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ## [Unreleased]
+
+## [0.8.1] - 2023-11-01
 ### Fixed
 - docs deployment.
 
@@ -73,7 +75,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - First release on PyPI.
 
-[Unreleased]: https://github.com/fedejaure/mdns-beacon/compare/v0.8.0...develop
+[Unreleased]: https://github.com/fedejaure/mdns-beacon/compare/v0.8.1...develop
+[0.8.1]: https://github.com/fedejaure/mdns-beacon/compare/v0.8.0...v0.8.1
 [0.8.0]: https://github.com/fedejaure/mdns-beacon/compare/v0.7.1...v0.8.0
 [0.7.1]: https://github.com/fedejaure/mdns-beacon/compare/v0.7.0...v0.7.1
 [0.7.0]: https://github.com/fedejaure/mdns-beacon/compare/v0.6.1...v0.7.0
