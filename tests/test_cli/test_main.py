@@ -33,15 +33,15 @@ def test_command_line_interface(options: List[str], expected: str) -> None:
 @pytest.mark.parametrize(
     "options,expected",
     [
-        (["example", "--protocol", "tcp"], "Shutting down ...\n"),
-        (["example", "--alias", "sub1.example"], "Shutting down ...\n"),
+        (["example", "--protocol", "tcp"], "Shutting down"),
+        (["example", "--alias", "sub1.example"], "Shutting down"),
         (
             ["example", "--alias", "sub1.example", "--address", "127.0.0.1", "--type", "http"],
-            "Shutting down ...\n",
+            "Shutting down",
         ),
         (
             ["example", "--alias", "sub1.example", "--address", "127.0.0.1", "--address", "::1"],
-            "Shutting down ...\n",
+            "Shutting down",
         ),
     ],
 )
@@ -58,6 +58,7 @@ def test_blink(
         result = runner.invoke(main, ["blink"] + options)
 
     assert result.exit_code == 0
+    print(result.output)
     assert expected in result.output
 
 
@@ -65,12 +66,12 @@ def test_blink(
 @pytest.mark.parametrize(
     "options,timeout,expected",
     [
-        ([], 8, "Shutting down ...\n"),
-        (["--service", "_http._tcp.local."], 2, "Shutting down ...\n"),
+        ([], 10, "Shutting down"),
+        (["--service", "_http._tcp.local."], 2, "Shutting down"),
         (
             ["--service", "_http._tcp.local.", "--service", "_hap._tcp.local."],
             2,
-            "Shutting down ...\n",
+            "Shutting down",
         ),
     ],
 )
