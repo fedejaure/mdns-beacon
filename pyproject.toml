@@ -29,8 +29,8 @@ mdns-beacon = 'mdns_beacon.cli.main:main'
 [tool.poetry.dependencies]
 python = "<3.12,>=3.8"
 click = "^8.1.7"
-zeroconf = "^0.119.0"
-rich = "^13.6.0"
+zeroconf = "^0.128.0"
+rich = "^13.7.0"
 python-slugify = "^8.0.1"
 typing-extensions = "^4.8.0"
 click-option-group = "^0.5.6"
@@ -42,15 +42,15 @@ bump2version = "^1.0.1"
 
 [tool.poetry.group.formating.dependencies]
 isort = "^5.12.0"
-black = "^23.10.1"
+black = "^23.11.0"
 
 [tool.poetry.group.security.dependencies]
-safety = "^2.4.0b1"
+safety = "^2.4.0b2"
 
 [tool.poetry.group.linters.dependencies]
 flake8 = ">=4.0.1,<5.0"
 flakeheaven = "^3.3.0"
-flake8-builtins = "^2.1.0"
+flake8-builtins = "^2.2.0"
 flake8-blind-except = "^0.2.1"
 flake8-logging-format = "^0.9.0"
 flake8-bugbear = "^23.3.12"
@@ -75,7 +75,7 @@ recommonmark = "^0.7.1"
 watchdog = {version = "^3.0.0", extras = ["watchmedo"]}
 
 [tool.poetry.group.typing.dependencies]
-mypy = "^1.6.1"
+mypy = "^1.7.1"
 types-click = "^7.1.8"
 types-python-slugify = "^8.0.0.3"
 
