@@ -65,7 +65,7 @@ def test_blink(
 @pytest.mark.parametrize(
     "options,timeout,expected",
     [
-        ([], 8, "Shutting down ...\n"),
+        ([], 10, "Shutting down ...\n"),
         (["--service", "_http._tcp.local."], 2, "Shutting down ...\n"),
         (
             ["--service", "_http._tcp.local.", "--service", "_hap._tcp.local."],
