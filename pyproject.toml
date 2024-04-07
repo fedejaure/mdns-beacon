@@ -30,7 +30,7 @@ mdns-beacon = 'mdns_beacon.cli.main:main'
 python = "<3.12,>=3.8"
 click = "^8.1.7"
 zeroconf = "^0.132.0"
-rich = "^13.7.0"
+rich = "^13.7.1"
 python-slugify = "^8.0.4"
 typing-extensions = "^4.8.0"
 click-option-group = "^0.5.6"
