@@ -1,4 +1,5 @@
 """Top-level package for mdns-beacon."""
+
 from .beacon import Beacon  # noqa: F401
 from .listener import BeaconListener  # noqa: F401
 

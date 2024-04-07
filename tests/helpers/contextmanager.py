@@ -1,4 +1,5 @@
 """Utils tests module."""
+
 import contextlib
 import os
 import signal

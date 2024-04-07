@@ -3,6 +3,7 @@ Tasks for maintaining the project.
 
 Execute 'invoke --list' for guidance on using Invoke
 """
+
 import platform
 import webbrowser
 from pathlib import Path
@@ -24,6 +25,7 @@ TEST_DIR = ROOT_DIR.joinpath("tests")
 PYTHON_TARGETS = [
     SOURCE_DIR,
     TEST_DIR,
+    DOCS_DIR.joinpath("conf.py"),
     ROOT_DIR.joinpath("noxfile.py"),
     Path(__file__),
 ]

@@ -1,4 +1,5 @@
 """Tests for `base` module."""
+
 from asyncio import AbstractEventLoop
 from typing import Optional
 

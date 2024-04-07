@@ -1,4 +1,5 @@
 """mDNS listener module."""
+
 import logging
 from typing import Any, Callable, List, Optional, Set, Union
 
