@@ -1,4 +1,5 @@
 """Tests for `listener` module."""
+
 from asyncio import AbstractEventLoop
 from typing import Any, Dict, Set
 

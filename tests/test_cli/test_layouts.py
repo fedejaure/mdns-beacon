@@ -1,4 +1,5 @@
 """Tests for `mdns_beacon.cli.layouts` module."""
+
 from contextlib import ExitStack as does_not_raise
 from io import StringIO
 from typing import ContextManager, Optional, Tuple, Type

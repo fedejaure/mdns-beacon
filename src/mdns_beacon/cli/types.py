@@ -1,4 +1,5 @@
 """Param types for mdns-beacon."""
+
 from ipaddress import IPv4Address, IPv6Address, ip_address
 from typing import AnyStr, Optional, Union
 

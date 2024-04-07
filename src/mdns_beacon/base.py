@@ -1,4 +1,5 @@
 """Base mDNS Beacon module."""
+
 import asyncio
 import logging
 from abc import ABC, abstractmethod
