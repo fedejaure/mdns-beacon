@@ -72,7 +72,7 @@ pytest-mock = "^3.14.0"
 [tool.poetry.group.docs.dependencies]
 sphinx = "^7.1.2"
 recommonmark = "^0.7.1"
-watchdog = {version = "^3.0.0", extras = ["watchmedo"]}
+watchdog = {version = "^4.0.0", extras = ["watchmedo"]}
 
 [tool.poetry.group.typing.dependencies]
 mypy = "^1.7.1"
