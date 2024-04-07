@@ -1755,13 +1755,13 @@ files = [
 
 [[package]]
 name = "types-python-slugify"
-version = "8.0.0.3"
+version = "8.0.2.20240310"
 description = "Typing stubs for python-slugify"
 optional = false
-python-versions = "*"
+python-versions = ">=3.8"
 files = [
-    {file = "types-python-slugify-8.0.0.3.tar.gz", hash = "sha256:868e6610ab9a01c01b2ccc1b982363e694d6bbb4fcf32e0d82688c89dceb4e2c"},
-    {file = "types_python_slugify-8.0.0.3-py3-none-any.whl", hash = "sha256:2353c161c79ab6cce955b50720c6cd03586ec297558122236d130e4a19f21209"},
+    {file = "types-python-slugify-8.0.2.20240310.tar.gz", hash = "sha256:5157b508c7fed587520c70d77f62aea0fafdc6620893c2ec8972f13a1faf5560"},
+    {file = "types_python_slugify-8.0.2.20240310-py3-none-any.whl", hash = "sha256:0efec18b802c69ebd22dcee55c91afaeaa80e1e40ddd66ccabf69fd42ce87b74"},
 ]
 
 [[package]]
@@ -1909,4 +1909,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "<3.12,>=3.8"
-content-hash = "a8ba3f885ddeed379da7e179812145587f518e30ffa9b7af19a4bacbcd2a8929"
+content-hash = "8f1aa18f9b83fcc24b5267d58607eaf60cc07fc63371f8e863cd7187883b4107"
