@@ -102,7 +102,7 @@ jobs:
       - name: Create coverage report
         shell: bash
         run: |
-          nox --force-color --session=coverage -- --fmt xml
+          nox --force-color -s coverage-3.8 -- --fmt xml
 
       - name: Upload coverage report
         uses: codecov/codecov-action@v4.2.0
