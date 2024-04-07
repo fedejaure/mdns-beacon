@@ -1,4 +1,5 @@
 """Tests for `mdns_beacon.cli.types` module."""
+
 from contextlib import ExitStack as does_not_raise
 from ipaddress import IPv4Address, IPv6Address
 from typing import ContextManager, Optional, Union

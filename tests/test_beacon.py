@@ -1,4 +1,5 @@
 """Tests for `beacon` module."""
+
 from asyncio import AbstractEventLoop
 from typing import Any, Dict, Set
 from uuid import uuid4

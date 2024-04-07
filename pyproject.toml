@@ -29,9 +29,9 @@ mdns-beacon = 'mdns_beacon.cli.main:main'
 [tool.poetry.dependencies]
 python = "<3.12,>=3.8"
 click = "^8.1.7"
-zeroconf = "^0.128.0"
-rich = "^13.7.0"
-python-slugify = "^8.0.1"
+zeroconf = "^0.132.0"
+rich = "^13.7.1"
+python-slugify = "^8.0.4"
 typing-extensions = "^4.8.0"
 click-option-group = "^0.5.6"
 
@@ -42,7 +42,7 @@ bump2version = "^1.0.1"
 
 [tool.poetry.group.formating.dependencies]
 isort = "^5.12.0"
-black = "^23.11.0"
+black = "^24.3.0"
 
 [tool.poetry.group.security.dependencies]
 safety = "^2.4.0b2"
@@ -77,7 +77,7 @@ watchdog = {version = "^3.0.0", extras = ["watchmedo"]}
 [tool.poetry.group.typing.dependencies]
 mypy = "^1.7.1"
 types-click = "^7.1.8"
-types-python-slugify = "^8.0.0.3"
+types-python-slugify = "^8.0.2.20240310"
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]

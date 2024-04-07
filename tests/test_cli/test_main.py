@@ -1,4 +1,5 @@
 """Tests for `mdns_beacon.cli.main` module."""
+
 from asyncio import AbstractEventLoop
 from typing import List
 from uuid import uuid4

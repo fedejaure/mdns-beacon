@@ -1,4 +1,5 @@
 """Beacon module."""
+
 import logging
 import time
 from ipaddress import IPv4Address, IPv6Address, ip_address
