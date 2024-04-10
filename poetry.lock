@@ -744,13 +744,13 @@ dev = ["coverage", "hypothesis", "hypothesmith (>=0.2)", "pre-commit", "pytest",
 
 [[package]]
 name = "flake8-builtins"
-version = "2.2.0"
+version = "2.5.0"
 description = "Check for python builtins being used as variables or parameters"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "flake8_builtins-2.2.0-py3-none-any.whl", hash = "sha256:7ee5766d9c60e5d579dfda84e65c6d0e6c26005f6f59cb9bf722462d7987a807"},
-    {file = "flake8_builtins-2.2.0.tar.gz", hash = "sha256:392d5af3a0720c5a863aa93dc47f48c879081345a143fe9f20d995fe9ff5686a"},
+    {file = "flake8_builtins-2.5.0-py3-none-any.whl", hash = "sha256:8cac7c52c6f0708c0902b46b385bc7e368a9068965083796f1431c0d2e6550cf"},
+    {file = "flake8_builtins-2.5.0.tar.gz", hash = "sha256:bdaa3dd823e4f5308c5e712d19fa5f69daa52781ea874f5ea9c3637bcf56faa6"},
 ]
 
 [package.dependencies]
@@ -2231,4 +2231,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "<3.12,>=3.8"
-content-hash = "ae24b7cddf6ecddb61485b306d1d21a74abe15bf37e460c31ef269509f54cedf"
+content-hash = "31a57ea4cca1d5f0aef4aa4d5e57c9fe942eba293f3a82803452351b26b313c3"
