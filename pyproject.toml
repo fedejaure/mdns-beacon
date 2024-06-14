@@ -75,7 +75,7 @@ recommonmark = "^0.7.1"
 watchdog = {version = "^4.0.0", extras = ["watchmedo"]}
 
 [tool.poetry.group.typing.dependencies]
-mypy = "^1.9.0"
+mypy = "^1.10.0"
 types-click = "^7.1.8"
 types-python-slugify = "^8.0.2.20240310"
 
