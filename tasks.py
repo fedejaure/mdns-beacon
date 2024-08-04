@@ -111,9 +111,8 @@ def flake8(c):
 
 
 @task()
-def safety(c):
-    # type: (Context) -> None
-    """Run safety."""
+def security(c: Context) -> None:
+    """Run security related checks."""
     _run(
         c,
         "poetry export --with dev --format=requirements.txt --without-hashes | "
@@ -121,7 +120,7 @@ def safety(c):
     )
 
 
-@task(pre=[flake8, safety, call(format_, check=True)])
+@task(pre=[flake8, security, call(format_, check=True)])
 def lint(c):
     # type: (Context) -> None
     """Run all linting."""
