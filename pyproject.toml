@@ -59,7 +59,7 @@ flake8-docstrings = "^1.7.0"
 flake8-bandit = "^3.0.0"
 flake8-broken-line = "^0.6.0"
 darglint = "^1.8.1"
-pylint = "^3.2.3"
+pylint = "^3.2.6"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.4.4"
