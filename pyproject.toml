@@ -42,10 +42,10 @@ bump2version = "^1.0.1"
 
 [tool.poetry.group.formating.dependencies]
 isort = "^5.13.2"
-black = "^24.4.2"
+black = "^24.8.0"
 
 [tool.poetry.group.security.dependencies]
-safety = "^3.2.3"
+safety = "^3.2.4"
 
 [tool.poetry.group.linters.dependencies]
 flake8 = ">=4.0.1,<5.0"
@@ -59,12 +59,12 @@ flake8-docstrings = "^1.7.0"
 flake8-bandit = "^3.0.0"
 flake8-broken-line = "^0.6.0"
 darglint = "^1.8.1"
-pylint = "^3.2.3"
+pylint = "^3.2.6"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.4.4"
-xdoctest = "^1.1.5"
-coverage = {version = "^7.5.3", extras = ["toml"]}
+xdoctest = "^1.1.6"
+coverage = {version = "^7.6.1", extras = ["toml"]}
 pytest-cov = "^5.0.0"
 pytest-asyncio = "^0.23.2"
 pytest-mock = "^3.14.0"
@@ -75,7 +75,7 @@ recommonmark = "^0.7.1"
 watchdog = {version = "^4.0.1", extras = ["watchmedo"]}
 
 [tool.poetry.group.typing.dependencies]
-mypy = "^1.10.0"
+mypy = "^1.11.1"
 types-click = "^7.1.8"
 types-python-slugify = "^8.0.2.20240310"
 
