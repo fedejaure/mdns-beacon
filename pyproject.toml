@@ -45,7 +45,7 @@ isort = "^5.13.2"
 black = "^24.8.0"
 
 [tool.poetry.group.security.dependencies]
-safety = "^3.2.7"
+safety = "^3.2.4"
 
 [tool.poetry.group.linters.dependencies]
 flake8 = ">=4.0.1,<5.0"
@@ -72,7 +72,7 @@ pytest-mock = "^3.14.0"
 [tool.poetry.group.docs.dependencies]
 sphinx = "^7.1.2"
 recommonmark = "^0.7.1"
-watchdog = {version = "^4.0.1", extras = ["watchmedo"]}
+watchdog = {version = "^4.0.2", extras = ["watchmedo"]}
 
 [tool.poetry.group.typing.dependencies]
 mypy = "^1.11.1"
