@@ -15,34 +15,43 @@ from helpers.contextmanager import raise_keyboard_interrupt
 @pytest.mark.parametrize(
     "beacon_params,expected_services",
     [
-        ({"ip_version": None, "services": None, "timeout": 2}, BeaconListener._DEFAULT_SERVICES),
-        (
+        pytest.param(
+            {"ip_version": None, "services": None, "timeout": 2},
+            BeaconListener._DEFAULT_SERVICES,
+            id="base",
+        ),
+        pytest.param(
             {"ip_version": IPVersion.V4Only, "services": None, "timeout": 2},
             BeaconListener._DEFAULT_SERVICES,
+            id="base_ipv4",
         ),
-        (
+        pytest.param(
             {"ip_version": IPVersion.V6Only, "services": None, "timeout": 2},
             BeaconListener._DEFAULT_SERVICES,
+            id="base_ipv6",
         ),
-        (
+        pytest.param(
             {
                 "ip_version": None,
                 "services": ["_http._tcp.local.", "_http._tcp.local."],
                 "timeout": 0.5,
             },
             {"_http._tcp.local."},
+            id="custom_services",
         ),
-        (
+        pytest.param(
             {"ip_version": IPVersion.V4Only, "services": ["_hap._tcp.local."], "timeout": 0.5},
             {"_hap._tcp.local."},
+            id="ipv4_custom_services",
         ),
-        (
+        pytest.param(
             {
                 "ip_version": IPVersion.V6Only,
-                "services": ["_some_type._some_protocol.local."],
+                "services": ["_some_type._unknown.local."],
                 "timeout": 1,
             },
-            {"_some_type._some_protocol.local."},
+            {"_some_type._unknown.local."},
+            id="ipv6_unknown_services",
         ),
     ],
 )
