@@ -11,7 +11,7 @@ from pytest_mock import MockerFixture
 import mdns_beacon
 from mdns_beacon.cli.main import main
 
-from helpers.contextmanager import raise_keyboard_interrupt
+from ..helpers.contextmanager import raise_keyboard_interrupt
 
 
 @pytest.mark.parametrize(
@@ -56,7 +56,7 @@ def test_blink(
 
     runner = CliRunner()
     with raise_keyboard_interrupt(timeout=6):
-        result = runner.invoke(main, ["blink"] + options)
+        result = runner.invoke(main, ["blink", *options])
 
     assert result.exit_code == 0
     print(result.output)
@@ -87,7 +87,7 @@ def test_listen(
     runner = CliRunner()
 
     with raise_keyboard_interrupt(timeout=timeout):
-        result = runner.invoke(main, ["listen"] + options)
+        result = runner.invoke(main, ["listen", *options])
 
     assert result.exit_code == 0
     assert expected in result.output

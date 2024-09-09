@@ -18,13 +18,8 @@ repos:
     rev: 24.8.0
     hooks:
       - id: black
--   repo: local
+-   repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.6.4
     hooks:
-      - id: flakeheaven
-        name: flakeheaven
-        description: "`FlakeHeaven` it's a Flake8 wrapper to make it cools."
-        entry: poetry run flakeheaven
-        args: [lint]
-        language: system
-        types: [python]
-        require_serial: true
+      - id: ruff
+        args: [ --fix ]

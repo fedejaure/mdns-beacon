@@ -4,7 +4,7 @@
 
 [![PyPI - Version](https://img.shields.io/pypi/v/mdns-beacon.svg)](https://pypi.python.org/pypi/mdns-beacon)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mdns-beacon.svg)](https://pypi.python.org/pypi/mdns-beacon)
-[![Tests](https://github.com/fedejaure/mdns-beacon/actions/workflows/tests.yml/badge.svg)](https://github.com/fedejaure/mdns-beacon/actions/workflows/tests.yml)
+[![tests](https://github.com/fedejaure/mdns-beacon/actions/workflows/tests.yml/badge.svg)](https://github.com/fedejaure/mdns-beacon/actions/workflows/tests.yml)
 [![Codecov](https://codecov.io/gh/fedejaure/mdns-beacon/branch/main/graph/badge.svg)](https://codecov.io/gh/fedejaure/mdns-beacon)
 [![Read the Docs](https://readthedocs.org/projects/mdns-beacon/badge/)](https://mdns-beacon.readthedocs.io/)
 [![PyPI - License](https://img.shields.io/pypi/l/mdns-beacon.svg)](https://pypi.python.org/pypi/mdns-beacon)
