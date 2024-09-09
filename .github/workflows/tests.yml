@@ -13,7 +13,7 @@ jobs:
     name: Linting
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4.1.7
 
       - name: Set up Python 3.10
         uses: actions/setup-python@v5.2.0
@@ -34,14 +34,14 @@ jobs:
   tests:
     needs: linting
     name: ${{ matrix.os }} / ${{ matrix.python-version }}
-    runs-on: ${{ matrix.os }}-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [Ubuntu, MacOS]
+        os: ['Ubuntu-24.04', 'MacOS-latest']
         python-version: ['3.10', '3.11', '3.12', '3.13']
       fail-fast: true
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4.1.7
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5.2.0
@@ -80,7 +80,7 @@ jobs:
     needs: tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4.1.7
 
       - name: Set up Python 3.10
         uses: actions/setup-python@v5.2.0
