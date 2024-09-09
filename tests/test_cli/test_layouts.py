@@ -1,6 +1,6 @@
 """Tests for `mdns_beacon.cli.layouts` module."""
 
-from contextlib import ExitStack as does_not_raise
+from contextlib import ExitStack
 from io import StringIO
 from typing import ContextManager, Optional, Tuple, Type
 
@@ -61,9 +61,9 @@ def test_render_layout(layout_class: Type[BaseLayout], expected: str) -> None:
 @pytest.mark.parametrize(
     "show_columns,raises,state_change",
     [
-        (None, does_not_raise(), ServiceStateChange.Removed),
-        (tuple(), does_not_raise(), ServiceStateChange.Removed),
-        (("weight", "priority", "text", "properties"), does_not_raise(), ServiceStateChange.Added),
+        (None, ExitStack(), ServiceStateChange.Removed),
+        ((), ExitStack(), ServiceStateChange.Removed),
+        (("weight", "priority", "text", "properties"), ExitStack(), ServiceStateChange.Added),
         (
             ("weight", "priority", "text", "wrong_column"),
             pytest.raises(ValueError),

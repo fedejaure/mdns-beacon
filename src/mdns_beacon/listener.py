@@ -1,9 +1,9 @@
 """mDNS listener module."""
 
 import logging
-from typing import Any, Callable, List, Optional, Set, Union
+from typing import Callable, ClassVar, List, Optional, Set, Union
 
-from zeroconf import ServiceBrowser, ServiceListener, ZeroconfServiceTypes
+from zeroconf import IPVersion, ServiceBrowser, ServiceListener, ZeroconfServiceTypes
 
 from .base import BaseBeacon
 
@@ -20,15 +20,15 @@ class BeaconListener(BaseBeacon):
         timeout: Seconds to wait for any responses.
     """
 
-    _DEFAULT_SERVICES = {"_http._tcp.local.", "_hap._tcp.local."}
+    _DEFAULT_SERVICES: ClassVar[Set[str]] = {"_http._tcp.local.", "_hap._tcp.local."}
 
     def __init__(
         self,
         handlers: Union[ServiceListener, List[Callable[..., None]]],
         services: Optional[List[str]] = None,
         timeout: Union[int, float] = 5,
-        *args: Any,
-        **kwargs: Any,
+        *args: Optional[IPVersion],
+        **kwargs: Optional[IPVersion],
     ) -> None:
         """Init a mDNS Beacon listener.
 

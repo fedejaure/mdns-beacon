@@ -16,7 +16,6 @@ class DummyBeacon(BaseBeacon):
 
     def _execute(self) -> None:
         """Execute dummy action."""
-        self.zeroconf
 
 
 @pytest.mark.parametrize(
