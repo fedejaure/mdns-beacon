@@ -1,11 +1,12 @@
 """Nox sessions."""
+
 import platform
 
 import nox
 from nox_poetry import Session, session
 
 nox.options.sessions = ["tests", "mypy"]
-python_versions = ["3.8", "3.9", "3.10", "3.11"]
+python_versions = ["3.10", "3.11", "3.12"]
 
 
 @session(python=python_versions)
@@ -34,7 +35,7 @@ def tests(session: Session) -> None:
             session.notify("coverage")
 
 
-@session
+@session(python=python_versions)
 def coverage(session: Session) -> None:
     """Produce the coverage report."""
     args = session.posargs if session.posargs and len(session._runner.manifest) == 1 else []
@@ -50,8 +51,8 @@ def mypy(session: Session) -> None:
     session.run("inv", "mypy")
 
 
-@session(python="3.11")
-def safety(session: Session) -> None:
+@session(python="3.12")
+def security(session: Session) -> None:
     """Scan dependencies for insecure packages."""
     session.install("invoke", "safety")
-    session.run("inv", "safety")
+    session.run("inv", "security")

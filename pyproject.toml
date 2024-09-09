@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mdns-beacon"
-version = "0.8.1"
+version = "1.0.0"
 description = "Multicast DNS (mDNS) Beacon to announce multiple CNAME aliases across your local network."
 authors = ["Federico Jaureguialzo <fedejaure@gmail.com>"]
 readme = "README.md"
@@ -14,10 +14,9 @@ classifiers=[
     "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
 ]
 
 [tool.poetry.urls]
@@ -27,57 +26,44 @@ classifiers=[
 mdns-beacon = 'mdns_beacon.cli.main:main'
 
 [tool.poetry.dependencies]
-python = "<3.12,>=3.8"
+python = "<3.13,>=3.10"
 click = "^8.1.7"
-zeroconf = "^0.119.0"
-rich = "^13.6.0"
-python-slugify = "^8.0.1"
-typing-extensions = "^4.8.0"
+zeroconf = "^0.134.0"
+rich = "^13.8.0"
+python-slugify = "^8.0.4"
+typing-extensions = "^4.12.2"
 click-option-group = "^0.5.6"
 
 [tool.poetry.group.dev.dependencies]
-pre-commit = "^3.5.0"
+pre-commit = "^3.8.0"
 invoke = "^2.2.0"
 bump2version = "^1.0.1"
 
-[tool.poetry.group.formating.dependencies]
-isort = "^5.12.0"
-black = "^23.10.1"
+[tool.poetry.group.linters.dependencies]
+isort = "^5.13.2"
+black = "^24.8.0"
+ruff = "^0.6.4"
 
 [tool.poetry.group.security.dependencies]
-safety = "^2.4.0b1"
-
-[tool.poetry.group.linters.dependencies]
-flake8 = ">=4.0.1,<5.0"
-flakeheaven = "^3.3.0"
-flake8-builtins = "^2.1.0"
-flake8-blind-except = "^0.2.1"
-flake8-logging-format = "^0.9.0"
-flake8-bugbear = "^23.3.12"
-flake8-annotations = "^2.9.1"
-flake8-docstrings = "^1.7.0"
-flake8-bandit = "^3.0.0"
-flake8-broken-line = "^0.6.0"
-darglint = "^1.8.1"
-pylint = "^3.0.2"
+safety = "^3.2.4"
 
 [tool.poetry.group.test.dependencies]
-pytest = "^7.4.3"
-xdoctest = "^1.1.2"
-coverage = {version = "^7.3.2", extras = ["toml"]}
-pytest-cov = "^4.1.0"
-pytest-asyncio = "^0.21.1"
-pytest-mock = "^3.12.0"
+pytest = "^8.3.2"
+xdoctest = "^1.2.0"
+coverage = {version = "^7.6.1", extras = ["toml"]}
+pytest-cov = "^5.0.0"
+pytest-asyncio = "^0.24.0"
+pytest-mock = "^3.14.0"
 
 [tool.poetry.group.docs.dependencies]
-sphinx = "^7.1.2"
+sphinx = "^8.0.2"
 recommonmark = "^0.7.1"
-watchdog = {version = "^3.0.0", extras = ["watchmedo"]}
+watchdog = {version = "^5.0.2", extras = ["watchmedo"]}
 
 [tool.poetry.group.typing.dependencies]
-mypy = "^1.6.1"
+mypy = "^1.11.2"
 types-click = "^7.1.8"
-types-python-slugify = "^8.0.0.3"
+types-python-slugify = "^8.0.2.20240310"
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
@@ -103,24 +89,48 @@ show_missing = true
 [tool.coverage.html]
 directory = "htmlcov"
 
-[tool.flakeheaven]
-format = "grouped"
-max_line_length = 99
-show_source = true
-docstring-convention = "google"
-extended_default_ignore = []
+[tool.ruff]
+target-version = "py310"
+output-format = "full"
+line-length = 99
+fix = true
+extend-exclude = [
+    "docs/*",
+]
 
-[tool.flakeheaven.plugins]
-pyflakes = ["+*"]
-pycodestyle = ["+*"]
-mccabe = ["+*"]
-flake8-annotations = ["+*", "-ANN1??", "-ANN401"]
-flake8-docstrings = ["+*", "-D212"]
-"flake8-*" = ["+*"]
-pylint = ["-C????", "-E????", "+F????", "+I????", "-R????", "-W????"]
+[tool.ruff.lint]
+select = [
+  "E", "F", "W",  # flake8
+  "C",  # mccabe
+  "I",  # isort
+  "N",  # pep8-naming
+  "D",  # flake8-docstrings
+  "ANN",  # flake8-annotations
+  "S",  # flake8-bandit
+  "BLE",  # flake8-blind-except
+  "B",  # flake8-bugbear
+  "A",  # flake8-builtins
+  "G",  # flake8-logging-format
+  "ERA",  # eradicate
+  "ISC",  # flake8-implicit-str-concat
+  "RUF",  # Ruff-specific rules
+]
+ignore = ["ANN101"]
+unfixable = [
+  "ERA",  # Don't remove commented-out code
+]
 
-[tool.flakeheaven.exceptions."tests/"]
-flake8-bandit = ["-S101"]
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.ruff.lint.isort]
+known-first-party = ["mdns_beacon"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
 
 [tool.isort]
 multi_line_output = 3
@@ -129,11 +139,10 @@ force_grid_wrap = 0
 use_parentheses = true
 line_length = 99
 known_third_party = ["invoke", "nox", "nox_poetry"]
-known_local_folder = ["helpers"]
 
 [tool.black]
 line-length = 99
-target-version = ["py38"]
+target-version = ["py310"]
 
 [tool.pytest.ini_options]
 filterwarnings = [
@@ -144,6 +153,9 @@ markers = [
     "serial",
 ]
 norecursedirs = "tests/helpers"
+addopts = "--import-mode=importlib"
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "session"
 
 [tool.mypy]
 warn_return_any = true

@@ -1,5 +1,6 @@
 """Tests for `mdns_beacon.cli.types` module."""
-from contextlib import ExitStack as does_not_raise
+
+from contextlib import ExitStack
 from ipaddress import IPv4Address, IPv6Address
 from typing import ContextManager, Optional, Union
 
@@ -12,8 +13,8 @@ from mdns_beacon.cli.types import IpAddress
 @pytest.mark.parametrize(
     "address,raises,expected",
     [
-        ("127.0.0.1", does_not_raise(), IPv4Address("127.0.0.1")),
-        ("::1", does_not_raise(), IPv6Address("::1")),
+        ("127.0.0.1", ExitStack(), IPv4Address("127.0.0.1")),
+        ("::1", ExitStack(), IPv6Address("::1")),
         ("wrong address", pytest.raises(BadParameter), None),
     ],
 )

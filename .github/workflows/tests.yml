@@ -13,12 +13,12 @@ jobs:
     name: Linting
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4.1.7
 
-      - name: Set up Python 3.8
-        uses: actions/setup-python@v4
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5.2.0
         with:
-          python-version: 3.8
+          python-version: "3.10"
 
       - name: Install system deps
         shell: bash
@@ -38,13 +38,13 @@ jobs:
     strategy:
       matrix:
         os: [Ubuntu, MacOS]
-        python-version: ['3.8', '3.9', '3.10', '3.11']
+        python-version: ['3.10', '3.11', '3.12']
       fail-fast: true
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4.1.7
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5.2.0
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -63,27 +63,29 @@ jobs:
         shell: bash
         run: nox --force-color -s tests-${{ matrix.python-version }}
 
-      - name: Run safety check
-        if: matrix.python-version == '3.11' && matrix.os == 'Ubuntu'
+      - name: Run security check
+        if: matrix.python-version == '3.12' && matrix.os == 'Ubuntu'
         shell: bash
-        run: nox --force-color -s safety
+        run: nox --force-color -s security
 
       - name: Upload coverage data
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4.4.0
         with:
-          name: coverage-data
+          name: ${{ matrix.os }}-${{ matrix.python-version }}.coverage-data
           path: ".coverage.*"
+          include-hidden-files: true
+          retention-days: 2
 
   coverage:
     needs: tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4.1.7
 
-      - name: Set up Python 3.8
-        uses: actions/setup-python@v4
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5.2.0
         with:
-          python-version: 3.8
+          python-version: "3.10"
 
       - name: Install system deps
         shell: bash
@@ -93,16 +95,17 @@ jobs:
           poetry config virtualenvs.in-project true
 
       - name: Download coverage data
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
-          name: coverage-data
+          pattern: "*.coverage-data"
+          merge-multiple: true
 
       - name: Create coverage report
         shell: bash
         run: |
-          nox --force-color --session=coverage -- --fmt xml
+          nox --force-color -s coverage-3.10 -- --fmt xml
 
       - name: Upload coverage report
-        uses: codecov/codecov-action@v3.1.4
+        uses: codecov/codecov-action@v4.5.0
         with:
           token: ${{ secrets.CODECOV_TOKEN }}

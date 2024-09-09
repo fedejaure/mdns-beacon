@@ -1,4 +1,5 @@
 """Tests for `base` module."""
+
 from asyncio import AbstractEventLoop
 from typing import Optional
 
@@ -7,7 +8,7 @@ from zeroconf import IPVersion
 
 from mdns_beacon.base import BaseBeacon
 
-from helpers.contextmanager import raise_keyboard_interrupt
+from .helpers.contextmanager import raise_keyboard_interrupt
 
 
 class DummyBeacon(BaseBeacon):
@@ -15,7 +16,6 @@ class DummyBeacon(BaseBeacon):
 
     def _execute(self) -> None:
         """Execute dummy action."""
-        self.zeroconf
 
 
 @pytest.mark.parametrize(

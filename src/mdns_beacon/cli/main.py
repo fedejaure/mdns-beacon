@@ -1,4 +1,5 @@
 """Main script for mdns-beacon."""
+
 from ipaddress import IPv4Address, IPv6Address
 from typing import Dict, Iterable, Tuple, Union
 
@@ -18,7 +19,7 @@ console = Console()
 @click.group()
 @click.version_option(version=__version__)
 def main() -> None:
-    """Simple multicast DNS (mDNS) command line interface utility."""  # noqa:  D401
+    """Simple multicast DNS (mDNS) command line interface utility."""
 
 
 @main.command()

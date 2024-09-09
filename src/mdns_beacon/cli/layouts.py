@@ -1,6 +1,7 @@
 """Console layout for mdns-beacon."""
+
 from abc import ABC, abstractmethod
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Any, ClassVar, Dict, List, Optional, Tuple, Union
 
 from rich.console import RenderableType
 from rich.live import Live
@@ -64,8 +65,8 @@ class BlinkLayout(BaseLayout):
 class ListenLayout(BaseLayout):
     """Listen cli layout."""
 
-    services: Dict[str, Any] = {}
-    TABLE_SERVICES_COLUMNS = {
+    services: ClassVar[Dict[str, Any]] = {}
+    TABLE_SERVICES_COLUMNS: ClassVar[Dict[str, str]] = {
         "type": "Type",
         "name": "Name",
         "ipv4_address": "Address IPv4",
@@ -92,8 +93,8 @@ class ListenLayout(BaseLayout):
     def __init__(
         self,
         show_columns: Optional[Union[Tuple[str], List[str]]] = None,
-        *args: Any,
-        **kwargs: Any,
+        *args: Live,
+        **kwargs: Live,
     ) -> None:
         """Init listen layout."""
         self.show_columns = show_columns or self.DEFAULT_SHOW_COLUMNS

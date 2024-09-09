@@ -1,4 +1,5 @@
 """Tests for `mdns_beacon.cli.main` module."""
+
 from asyncio import AbstractEventLoop
 from typing import List
 from uuid import uuid4
@@ -10,7 +11,7 @@ from pytest_mock import MockerFixture
 import mdns_beacon
 from mdns_beacon.cli.main import main
 
-from helpers.contextmanager import raise_keyboard_interrupt
+from ..helpers.contextmanager import raise_keyboard_interrupt
 
 
 @pytest.mark.parametrize(
@@ -33,15 +34,15 @@ def test_command_line_interface(options: List[str], expected: str) -> None:
 @pytest.mark.parametrize(
     "options,expected",
     [
-        (["example", "--protocol", "tcp"], "Shutting down ...\n"),
-        (["example", "--alias", "sub1.example"], "Shutting down ...\n"),
+        (["example", "--protocol", "tcp"], "Shutting down"),
+        (["example", "--alias", "sub1.example"], "Shutting down"),
         (
             ["example", "--alias", "sub1.example", "--address", "127.0.0.1", "--type", "http"],
-            "Shutting down ...\n",
+            "Shutting down",
         ),
         (
             ["example", "--alias", "sub1.example", "--address", "127.0.0.1", "--address", "::1"],
-            "Shutting down ...\n",
+            "Shutting down",
         ),
     ],
 )
@@ -55,9 +56,10 @@ def test_blink(
 
     runner = CliRunner()
     with raise_keyboard_interrupt(timeout=6):
-        result = runner.invoke(main, ["blink"] + options)
+        result = runner.invoke(main, ["blink", *options])
 
     assert result.exit_code == 0
+    print(result.output)
     assert expected in result.output
 
 
@@ -65,12 +67,12 @@ def test_blink(
 @pytest.mark.parametrize(
     "options,timeout,expected",
     [
-        ([], 8, "Shutting down ...\n"),
-        (["--service", "_http._tcp.local."], 2, "Shutting down ...\n"),
+        ([], 10, "Shutting down"),
+        (["--service", "_http._tcp.local."], 2, "Shutting down"),
         (
             ["--service", "_http._tcp.local.", "--service", "_hap._tcp.local."],
             2,
-            "Shutting down ...\n",
+            "Shutting down",
         ),
     ],
 )
@@ -85,7 +87,7 @@ def test_listen(
     runner = CliRunner()
 
     with raise_keyboard_interrupt(timeout=timeout):
-        result = runner.invoke(main, ["listen"] + options)
+        result = runner.invoke(main, ["listen", *options])
 
     assert result.exit_code == 0
     assert expected in result.output

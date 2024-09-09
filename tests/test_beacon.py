@@ -1,4 +1,5 @@
 """Tests for `beacon` module."""
+
 from asyncio import AbstractEventLoop
 from typing import Any, Dict, Set
 from uuid import uuid4
@@ -8,7 +9,7 @@ from zeroconf import IPVersion
 
 from mdns_beacon.beacon import Beacon
 
-from helpers.contextmanager import raise_keyboard_interrupt
+from .helpers.contextmanager import raise_keyboard_interrupt
 
 
 @pytest.mark.slow

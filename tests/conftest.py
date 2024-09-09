@@ -1,4 +1,5 @@
 """Conftest module."""
+
 import asyncio
 from asyncio import AbstractEventLoop
 from typing import Generator

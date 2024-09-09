@@ -1,4 +1,5 @@
 """Beacon module."""
+
 import logging
 import time
 from ipaddress import IPv4Address, IPv6Address, ip_address
@@ -6,7 +7,7 @@ from typing import Any, Dict, List, Optional, Union
 
 from slugify import slugify
 from typing_extensions import Literal
-from zeroconf import ServiceInfo
+from zeroconf import IPVersion, ServiceInfo
 
 from .base import BaseBeacon
 
@@ -50,8 +51,8 @@ class Beacon(BaseBeacon):
         priority: int = 0,
         properties: Optional[Union[bytes, Dict[str, Any]]] = None,
         delay_startup: int = 0,
-        *args: Any,
-        **kwargs: Any,
+        *args: Optional[IPVersion],
+        **kwargs: Optional[IPVersion],
     ) -> None:
         """Init a mDNS Beacon instance.
 
