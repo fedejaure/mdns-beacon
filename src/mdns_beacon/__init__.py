@@ -5,4 +5,4 @@ from .listener import BeaconListener  # noqa: F401
 
 __author__ = """Federico Jaureguialzo"""
 __email__ = "fedejaure@gmail.com"
-__version__ = "0.8.1"
+__version__ = "1.0.0"
