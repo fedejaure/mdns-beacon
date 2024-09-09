@@ -8,7 +8,7 @@ from zeroconf import IPVersion
 
 from mdns_beacon.base import BaseBeacon
 
-from helpers.contextmanager import raise_keyboard_interrupt
+from .helpers.contextmanager import raise_keyboard_interrupt
 
 
 class DummyBeacon(BaseBeacon):

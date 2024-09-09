@@ -11,7 +11,7 @@ from pytest_mock import MockerFixture
 import mdns_beacon
 from mdns_beacon.cli.main import main
 
-from helpers.contextmanager import raise_keyboard_interrupt
+from ..helpers.contextmanager import raise_keyboard_interrupt
 
 
 @pytest.mark.parametrize(
