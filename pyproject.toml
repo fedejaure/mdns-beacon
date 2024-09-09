@@ -14,7 +14,6 @@ classifiers=[
     "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
@@ -27,7 +26,7 @@ classifiers=[
 mdns-beacon = 'mdns_beacon.cli.main:main'
 
 [tool.poetry.dependencies]
-python = "<3.13,>=3.9"
+python = "<3.13,>=3.10"
 click = "^8.1.7"
 zeroconf = "^0.134.0"
 rich = "^13.8.0"
@@ -91,7 +90,7 @@ show_missing = true
 directory = "htmlcov"
 
 [tool.ruff]
-target-version = "py39"
+target-version = "py310"
 output-format = "full"
 line-length = 99
 fix = true
@@ -143,7 +142,7 @@ known_third_party = ["invoke", "nox", "nox_poetry"]
 
 [tool.black]
 line-length = 99
-target-version = ["py39"]
+target-version = ["py310"]
 
 [tool.pytest.ini_options]
 filterwarnings = [
