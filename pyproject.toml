@@ -29,7 +29,7 @@ mdns-beacon = 'mdns_beacon.cli.main:main'
 python = "<3.13,>=3.10"
 click = "^8.1.7"
 zeroconf = "^0.134.0"
-rich = "^13.8.0"
+rich = "^13.8.1"
 python-slugify = "^8.0.4"
 typing-extensions = "^4.12.2"
 click-option-group = "^0.5.6"
@@ -42,13 +42,13 @@ bump2version = "^1.0.1"
 [tool.poetry.group.linters.dependencies]
 isort = "^5.13.2"
 black = "^24.8.0"
-ruff = "^0.6.4"
+ruff = "^0.6.6"
 
 [tool.poetry.group.security.dependencies]
 safety = "^3.2.4"
 
 [tool.poetry.group.test.dependencies]
-pytest = "^8.3.2"
+pytest = "^8.3.3"
 xdoctest = "^1.2.0"
 coverage = {version = "^7.6.1", extras = ["toml"]}
 pytest-cov = "^5.0.0"
