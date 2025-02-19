@@ -122,6 +122,7 @@ unfixable = [
 
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["S101"]
+"src/mdns_beacon/cli/types.py" = ["A005"]
 
 [tool.ruff.lint.mccabe]
 max-complexity = 10
