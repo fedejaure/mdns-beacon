@@ -42,7 +42,7 @@ bump2version = "^1.0.1"
 [tool.poetry.group.linters.dependencies]
 isort = "^6.0.0"
 black = "^25.1.0"
-ruff = "^0.7.3"
+ruff = "^0.9.6"
 
 [tool.poetry.group.security.dependencies]
 safety = "^3.3.0"
