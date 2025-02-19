@@ -48,7 +48,7 @@ ruff = "^0.7.3"
 safety = "^3.3.0"
 
 [tool.poetry.group.test.dependencies]
-pytest = "^8.3.3"
+pytest = "^8.3.4"
 xdoctest = "^1.2.0"
 coverage = {version = "^7.6.4", extras = ["toml"]}
 pytest-cov = "^6.0.0"
