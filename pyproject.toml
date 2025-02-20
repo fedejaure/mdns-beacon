@@ -1,12 +1,11 @@
-[tool.poetry]
+[project]
 name = "mdns-beacon"
 version = "1.0.0"
 description = "Multicast DNS (mDNS) Beacon to announce multiple CNAME aliases across your local network."
-authors = ["Federico Jaureguialzo <fedejaure@gmail.com>"]
+authors = [
+    {name = "Federico Jaureguialzo", email = "fedejaure@gmail.com"}
+]
 readme = "README.md"
-homepage = "https://github.com/fedejaure/mdns-beacon"
-repository = "https://github.com/fedejaure/mdns-beacon"
-documentation = "https://mdns-beacon.readthedocs.io"
 keywords = ["mdns-beacon", "mdns", "beacon", "avahi", "zeroconf", "bonjour"]
 classifiers=[
     "Development Status :: 2 - Pre-Alpha",
@@ -18,28 +17,34 @@ classifiers=[
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
 ]
+requires-python = "<3.13,>=3.10"
+dependencies = [
+  "click (>=8.1.8,<9.0.0)", 
+  "zeroconf (>=0.145.1,<0.146.0)", 
+  "rich (>=13.9.4,<14.0.0)", 
+  "python-slugify (>=8.0.4,<9.0.0)", 
+  "typing-extensions (>=4.12.2,<5.0.0)", 
+  "click-option-group (>=0.5.6,<0.6.0)"
+]
 
-[tool.poetry.urls]
+[project.urls]
+homepage = "https://github.com/fedejaure/mdns-beacon"
+repository = "https://github.com/fedejaure/mdns-beacon"
+documentation = "https://mdns-beacon.readthedocs.io"
 "Bug Tracker" = "https://github.com/fedejaure/mdns-beacon/issues"
 
-[tool.poetry.scripts]
+[project.scripts]
 mdns-beacon = 'mdns_beacon.cli.main:main'
 
-[tool.poetry.dependencies]
-python = "<3.13,>=3.10"
-click = "^8.1.8"
-zeroconf = "^0.145.1"
-rich = "^13.9.4"
-python-slugify = "^8.0.4"
-typing-extensions = "^4.12.2"
-click-option-group = "^0.5.6"
+[tool.poetry.requires-plugins]
+poetry-plugin-export = ">=1.8"
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^4.1.0"
 invoke = "^2.2.0"
 bump2version = "^1.0.1"
 
-[tool.poetry.group.linters.dependencies]
+[tool.poetry.group.lint.dependencies]
 isort = "^6.0.0"
 black = "^25.1.0"
 ruff = "^0.9.6"
@@ -178,5 +183,5 @@ warn_unreachable = true
 warn_no_return = true
 
 [build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

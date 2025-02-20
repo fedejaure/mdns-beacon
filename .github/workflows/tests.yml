@@ -25,7 +25,7 @@ jobs:
         run: |
           pip install poetry
           poetry config virtualenvs.in-project true
-          poetry install --no-root --only dev --only linters --sync
+          poetry install --no-root --only dev --only lint --sync
 
       - name: Linting
         shell: bash
@@ -54,6 +54,7 @@ jobs:
           pip install nox-poetry
           pip install poetry
           poetry config virtualenvs.in-project true
+          poetry self add poetry-plugin-export
 
       - name: Run mypy with nox
         shell: bash
@@ -93,6 +94,7 @@ jobs:
           pip install nox-poetry
           pip install poetry
           poetry config virtualenvs.in-project true
+          poetry self add poetry-plugin-export
 
       - name: Download coverage data
         uses: actions/download-artifact@v4
