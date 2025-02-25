@@ -6,6 +6,10 @@ updates:
       interval: "monthly"
       time: "08:00"
       timezone: "Europe/Amsterdam"
+    groups:
+      actions-updates:
+        patterns:
+          - "*"
     labels:
       - "dependencies"
       - "github_actions"
