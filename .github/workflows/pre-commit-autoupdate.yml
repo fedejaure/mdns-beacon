@@ -24,7 +24,7 @@ jobs:
         run: |
           pip install poetry
           poetry config virtualenvs.in-project true
-          poetry install --no-root --only dev --only lint --sync
+          poetry install --no-root --only dev --only linters --sync
 
       - name: Run autoupdate
         run: poetry run pre-commit autoupdate
