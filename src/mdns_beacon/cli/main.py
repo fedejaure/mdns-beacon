@@ -141,7 +141,7 @@ def blink(
     "--show",
     "show_columns",
     type=click.Choice(list(ListenLayout.TABLE_SERVICES_COLUMNS.keys()), case_sensitive=True),
-    callback=lambda ctx, param, value: tuple({v: None for v in value}.keys()),
+    callback=lambda ctx, param, value: tuple(dict.fromkeys(value).keys()),
     multiple=True,
     default=ListenLayout.DEFAULT_SHOW_COLUMNS,
     help="Service info to show.",
