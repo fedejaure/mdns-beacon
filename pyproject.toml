@@ -40,14 +40,14 @@ mdns-beacon = 'mdns_beacon.cli.main:main'
 poetry-plugin-export = ">=1.8"
 
 [tool.poetry.group.dev.dependencies]
-pre-commit = "^4.1.0"
+pre-commit = "^4.2.0"
 invoke = "^2.2.0"
 bump2version = "^1.0.1"
 
 [tool.poetry.group.linters.dependencies]
 isort = "^6.0.1"
 black = "^25.1.0"
-ruff = "^0.9.10"
+ruff = "^0.11.1"
 
 [tool.poetry.group.security.dependencies]
 safety = "^3.3.1"
@@ -55,7 +55,7 @@ safety = "^3.3.1"
 [tool.poetry.group.test.dependencies]
 pytest = "^8.3.5"
 xdoctest = "^1.2.0"
-coverage = {version = "^7.6.12", extras = ["toml"]}
+coverage = {version = "^7.7.0", extras = ["toml"]}
 pytest-cov = "^6.0.0"
 pytest-asyncio = "^0.25.3"
 pytest-mock = "^3.14.0"
