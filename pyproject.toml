@@ -57,7 +57,7 @@ pytest = "^8.4.0"
 xdoctest = "^1.2.0"
 coverage = {version = "^7.9.1", extras = ["toml"]}
 pytest-cov = "^6.2.1"
-pytest-asyncio = "^0.25.3"
+pytest-asyncio = "^1.0.0"
 pytest-mock = "^3.14.1"
 
 [tool.poetry.group.docs.dependencies]
