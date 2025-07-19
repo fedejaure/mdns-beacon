@@ -50,7 +50,7 @@ black = "^25.1.0"
 ruff = "^0.12.4"
 
 [tool.poetry.group.security.dependencies]
-safety = "^3.5.2"
+safety = "^3.6.0"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^8.4.1"
