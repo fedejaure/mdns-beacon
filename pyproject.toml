@@ -55,7 +55,7 @@ safety = "^3.6.0"
 [tool.poetry.group.test.dependencies]
 pytest = "^8.4.1"
 xdoctest = "^1.2.0"
-coverage = {version = "^7.10.1", extras = ["toml"]}
+coverage = {version = "^7.10.6", extras = ["toml"]}
 pytest-cov = "^6.2.1"
 pytest-asyncio = "^0.25.3"
 pytest-mock = "^3.14.1"
