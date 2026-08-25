@@ -1,6 +1,6 @@
 [project]
 name = "mdns-beacon"
-version = "1.0.0"
+version = "1.0.1"
 description = "Multicast DNS (mDNS) Beacon to announce multiple CNAME aliases across your local network."
 authors = [
     {name = "Federico Jaureguialzo", email = "fedejaure@gmail.com"}
