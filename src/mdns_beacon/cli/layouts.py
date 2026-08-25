@@ -151,10 +151,10 @@ class ListenLayout(BaseLayout):
                     "ttl": info.host_ttl,
                     "weight": info.weight,
                     "priority": info.priority,
-                    "text": info.text.decode("utf8"),
+                    "text": info.text.decode("utf-8", "replace"),
                     "properties": {
-                        (k.decode("utf8") if isinstance(k, bytes) else k): (
-                            v.decode("utf8") if isinstance(v, bytes) else v
+                        (k.decode("utf-8", "replace") if isinstance(k, bytes) else k): (
+                            v.decode("utf-8", "replace") if isinstance(v, bytes) else v
                         )
                         for k, v in info.properties.items()
                     },

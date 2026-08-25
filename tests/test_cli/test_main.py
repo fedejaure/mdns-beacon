@@ -15,19 +15,21 @@ from ..helpers.contextmanager import raise_keyboard_interrupt
 
 
 @pytest.mark.parametrize(
-    "options,expected",
+    "options,expected_exit_code,expected_output",
     [
-        ([], "Usage: main [OPTIONS]"),
-        (["--help"], "Usage: main [OPTIONS]"),
-        (["--version"], f"main, version { mdns_beacon.__version__ }\n"),
+        ([], 2, "Usage: main [OPTIONS]"),
+        (["--help"], 0, "Usage: main [OPTIONS]"),
+        (["--version"], 0, f"main, version { mdns_beacon.__version__ }\n"),
     ],
 )
-def test_command_line_interface(options: List[str], expected: str) -> None:
+def test_command_line_interface(
+    options: List[str], expected_exit_code: int, expected_output: str
+) -> None:
     """Test the CLI."""
     runner = CliRunner()
     result = runner.invoke(main, options)
-    assert result.exit_code == 0
-    assert expected in result.output
+    assert result.exit_code == expected_exit_code
+    assert expected_output in result.output
 
 
 @pytest.mark.slow
