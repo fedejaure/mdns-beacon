@@ -9,9 +9,7 @@ from pytest_mock import MockerFixture
 
 
 @pytest.fixture
-def safe_loop(
-    event_loop: AbstractEventLoop, mocker: MockerFixture
-) -> Generator[AbstractEventLoop, None, None]:
+def safe_loop(mocker: MockerFixture) -> Generator[AbstractEventLoop, None, None]:
     """Safe event loop fixture."""
     loop = asyncio.get_event_loop_policy().new_event_loop()
     asyncio.set_event_loop(loop)
