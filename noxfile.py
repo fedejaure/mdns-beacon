@@ -2,17 +2,14 @@
 
 import platform
 
-import nox
 from nox_poetry import Session, session
 
-nox.options.sessions = ["tests", "mypy"]
 python_versions = ["3.10", "3.11", "3.12"]
 
 
 @session(python=python_versions)
 def tests(session: Session) -> None:
     """Run the test suite."""
-    session.install(".")
     session.install(
         "invoke",
         "pytest",
@@ -21,6 +18,7 @@ def tests(session: Session) -> None:
         "pytest-cov",
         "pytest-mock",
         "pytest-asyncio",
+        ".",
     )
     try:
         session.run(
@@ -46,8 +44,7 @@ def coverage(session: Session) -> None:
 @session(python=python_versions)
 def mypy(session: Session) -> None:
     """Type-check using mypy."""
-    session.install(".")
-    session.install("invoke", "mypy", "pytest-mock", "types-click", "types-python-slugify")
+    session.install("invoke", "mypy", "pytest-mock", "types-click", "types-python-slugify", ".")
     session.run("inv", "mypy")
 
 

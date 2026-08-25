@@ -13,10 +13,10 @@ jobs:
     name: Linting
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.7
+      - uses: actions/checkout@v7.0.1
 
       - name: Set up Python 3.10
-        uses: actions/setup-python@v5.2.0
+        uses: actions/setup-python@v7.0.0
         with:
           python-version: "3.10"
 
@@ -41,10 +41,10 @@ jobs:
         python-version: ['3.10', '3.11', '3.12']
       fail-fast: true
     steps:
-      - uses: actions/checkout@v4.1.7
+      - uses: actions/checkout@v7.0.1
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5.2.0
+        uses: actions/setup-python@v7.0.0
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -54,6 +54,7 @@ jobs:
           pip install nox-poetry
           pip install poetry
           poetry config virtualenvs.in-project true
+          poetry self add poetry-plugin-export
 
       - name: Run mypy with nox
         shell: bash
@@ -69,7 +70,7 @@ jobs:
         run: nox --force-color -s security
 
       - name: Upload coverage data
-        uses: actions/upload-artifact@v4.4.0
+        uses: actions/upload-artifact@v7.0.1
         with:
           name: ${{ matrix.os }}-${{ matrix.python-version }}.coverage-data
           path: ".coverage.*"
@@ -80,10 +81,10 @@ jobs:
     needs: tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.7
+      - uses: actions/checkout@v7.0.1
 
       - name: Set up Python 3.10
-        uses: actions/setup-python@v5.2.0
+        uses: actions/setup-python@v7.0.0
         with:
           python-version: "3.10"
 
@@ -93,9 +94,10 @@ jobs:
           pip install nox-poetry
           pip install poetry
           poetry config virtualenvs.in-project true
+          poetry self add poetry-plugin-export
 
       - name: Download coverage data
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           pattern: "*.coverage-data"
           merge-multiple: true
@@ -106,6 +108,6 @@ jobs:
           nox --force-color -s coverage-3.10 -- --fmt xml
 
       - name: Upload coverage report
-        uses: codecov/codecov-action@v4.5.0
+        uses: codecov/codecov-action@v7.0.0
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
