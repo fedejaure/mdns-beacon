@@ -14,7 +14,7 @@ updates:
       - "dependencies"
       - "github_actions"
     open-pull-requests-limit: 99
-    target-branch: "develop"
+    target-branch: "main"
   - package-ecosystem: pip
     directory: "/docs"
     schedule:
@@ -25,7 +25,7 @@ updates:
       - "dependencies"
       - "python"
     open-pull-requests-limit: 99
-    target-branch: "develop"
+    target-branch: "main"
   - package-ecosystem: pip
     directory: "/"
     schedule:
@@ -36,4 +36,4 @@ updates:
       - "dependencies"
       - "python"
     open-pull-requests-limit: 99
-    target-branch: "develop"
+    target-branch: "main"

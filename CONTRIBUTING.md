@@ -52,7 +52,7 @@ such as personally identifiable information, connection strings or cloud credent
 
 Please follow these steps to have your contribution considered by the maintainers:
 
-1. Fork the repo and create your branch from `develop` locally with a succinct but descriptive name.
+1. Fork the repo and create your branch from `main` locally with a succinct but descriptive name.
 2. Add tests for the new changes
 3. Edit documentation if you have changed something significant
 4. Make sure to follow the [styleguides](#styleguides)
