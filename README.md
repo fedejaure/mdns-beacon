@@ -1,3 +1,5 @@
+
+
 # mDNS Beacon
 
 <div align="center">
@@ -37,6 +39,8 @@ Install `mdns-beacon` from the [Python Package Index][pypi]:
 ```
 $ pip install mdns-beacon
 ```
+
+Supports Python 3.10 through 3.12.
 
 #### Usage
 
