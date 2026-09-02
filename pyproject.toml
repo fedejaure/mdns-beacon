@@ -20,7 +20,7 @@ classifiers=[
 requires-python = "<3.13,>=3.10"
 dependencies = [
   "click (>=8.4.2,<9.0.0)", 
-  "zeroconf (>=0.150.0,<0.151.0)", 
+  "zeroconf (>=0.150.5,<0.151.0)", 
   "rich (>=15.0.0,<16.0.0)", 
   "python-slugify (>=8.0.4,<9.0.0)", 
   "typing-extensions (>=4.12.2,<5.0.0)", 
