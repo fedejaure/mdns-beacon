@@ -107,6 +107,6 @@ jobs:
           nox --force-color -s coverage-3.10 -- --fmt xml
 
       - name: Upload coverage report
-        uses: codecov/codecov-action@v7.0.0
+        uses: codecov/codecov-action@v7.1.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
